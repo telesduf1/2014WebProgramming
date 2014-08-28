@@ -9,7 +9,7 @@
 	<body>
 		<div>
 			<header>
-				<h1>This was edited at c9</h1>
+				<h1>This was edited at Aptana Studio</h1>
 			</header>
 			<nav>
 				<p>
