@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+	<html lang = "eng">
+
+  		<head>
+   			<title> CSS Menu </title>
+
+   			<meta charset="UTF-8">
+   			<meta name="Author" content="Fabricio Teles">
+   			<meta name="Description" content="CSS Menu">
+
+   			<style>
+    			/*Universal Selector to remove the margin and the padding*/	
+    			*{
+     				margin: 0;
+     				padding: 0;
+    			}
+    
+    			/*Setting font format*/
+    			body{
+     				font-family: Arial, Helvetica, sans-serif;
+     				font-size: 12px;
+    			}
+
+    			/*Removing list item marker and setting the TopMenu border to the left*/
+    			.topmenu{
+     				list-style:none;
+     				border:1px solid gray;
+     				float:left;
+    			}
+
+			    /*Setting TopMenu format*/
+    			.topmenu li{
+     				position:relative;
+     				border-right:1px solid gray;
+     				float:left;
+    			}
+
+    			/*Setting TopMenu items*/
+    			.topmenu li a{
+     				color: black; 
+     				text-decoration:none;
+     				padding:5px 10px; 
+     				display:block;
+    			}
+ 
+    			/*Setting items style when they are selected*/
+    			.topmenu li a:hover{
+     				background: gray;
+     				color: white;
+     				box-shadow:0 3px 10px 0 gray;  /*It Attaches a drop-shadow to the box selected*/
+     				text-shadow:0px 0px 5px white; /*It Attaches a drop-shadow to the text selected*/
+    			}
+
+    			/*Hiding SubMenu to attach drop-down effect and formatting it*/
+    			.topmenu li  ul{
+     				position:absolute; /*Top Item will remain in the same size*/
+     				top:25px; /*Top Item will remain in the same size*/
+     				left:0;
+     				background-color:white;
+     				display:none;
+    			} 	 
+
+			    /*It shows the SubMenu if exists one when Top Item is selected*/
+			    .topmenu li:hover ul{
+     				display:block;
+    			}
+
+			    /*Formatting SubMenu Items*/
+    			.topmenu li ul li{
+     				border:1px solid gray;
+     				display:block;
+     				width:150px;
+    			}
+
+   			</style>
+
+  		</head>
+
+   		<body>
+
+    		<nav>	
+     			<ul class="topmenu">
+      				<li><a href="#">Top 1</a>
+       					<ul>
+        					<li><a href="#">Sub 1</a></li>
+        					<li><a href="#">Sub 2</a></li>
+       					</ul>
+      				</li>
+
+      				<li><a href="#">Top 2</a>
+       					<ul>
+        					<li><a href="#">Sub 1</a></li>
+        					<li><a href="#">Sub 2</a></li>
+        					<li><a href="#">Sub 3</a></li>
+       					</ul>
+      				</li>
+
+      				<li><a href="#">Top 3</a>
+       					<ul>
+        					<li><a href="#">Sub 1</a></li>
+       					</ul>
+      				</li>
+
+      				<li><a href="#">Top 4</a>
+       					<ul>
+        					<li><a href="#">Sub 1</a></li>
+        					<li><a href="#">Sub 2</a></li>
+        					<li><a href="#">Sub 3</a></li>
+       					</ul>
+      				</li>
+
+      				<li><a href="#">Top 5</a></li>
+
+     			</ul>
+    		</nav>
+
+   		</body>
+
+ </html>
