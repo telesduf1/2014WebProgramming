@@ -8,11 +8,7 @@
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">		
-		
-		<style type = "text/css">
-			
-		</style>
-		
+				
 	</head>
 
 	<body>
@@ -41,12 +37,16 @@
 			<footer>
 				<div class="container">
 				
-				<p>
-					&copy; Copyright  by telesduf1
-				</p>
+					<p>
+						&copy; Copyright  by telesduf1
+					</p>
+				
 				</div>
 			</footer>
+
 		</div>
+
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 	</body>
 </html>
