@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
-
+			
+			<meta charset="UTF-8">
+			
 			<title>Fitness Tracker</title>
    			<meta name="Author" content="Fabricio Teles">
    			<meta name="Description" content="Screens">
@@ -32,34 +34,65 @@
 			<!-- Navagation bar -->
 			<div class="container">
 				<div class="navbar">
-          			<ul class="nav nav-justified">
+          			<ul class="nav nav-pills nav-justified">
             			<li class="active"><a href="index.html">Home</a></li>
+            			
+            			<li class="dropdown">
+            				<a  href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+            				<ul class="dropdown-menu dropdown-menu-right">
+         						<li><a href="showprogress.html">Show Progress</a></li>
+         						<li><a href="definegoal.html">Define New Goal </a></li>
+      						</ul>	
+            			</li>
+            			            			            			
             			<li><a href="registerexercise.html">Register Exercise</a></li>
-            			<li><a href="registerfood.html">Register Food</a></li>
-            			<li><a href="definegoal.html">Define New Goal </a></li>
-            			<li><a href="showprogress.html">Show Progress</a></li>
+            			<li><a href="registerfood.html">Register Meal</a></li>
             			<li><a href="#">Log out</a></li>
           			</ul>
         		</div>
 			</div>
 			
 			<!-- Page Content -->	
-			<div class="container" style="margin-left: auto; margin-right: auto; width: 500px; ">
+			<div class="container">
+				
 				<form class="form">
-        			<img src="https://cdn1.iconfinder.com/data/icons/adiante-apps-app-templates-incos-in-grey/128/app_type_gym_512px_GREY.png" alt="Sign In" class="img-responsive"
-        			style="margin-left: auto; margin-right: auto; width: 100px;">
+					
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+		        			<img src="https://cdn1.iconfinder.com/data/icons/adiante-apps-app-templates-incos-in-grey/128/app_type_gym_512px_GREY.png" alt="Sign In" class="col-xs-4 col-xs-offset-4">													
+						</div>
+					</div>
 
-        			<input type="text" class="form-control" placeholder="Username" required autofocus>
-        			<input type="password" class="form-control" placeholder="Password" required> <br>
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+        					<input type="text" class="form-control" placeholder="Username" required autofocus>
+						</div>
+					</div>
 
-        			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        			
-        			<a href="registeruser.html">Sign Up</a> 
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+        					<input type="password" class="form-control" placeholder="Password" required> <br>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+        					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+						</div>
+					</div>        			
+
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-4">
+        					<a href="registeruser.html">Sign Up</a> 
+						</div>
+					</div>        			
+
       			</form>				
+
 			</div>			
 			
 			<!-- Footer -->
-			<div class="footer navbar-fixed-bottom">
+			<div class="panel-footer text-center">
 				<div class="container">
 						
 					<p class="text-muted">
@@ -69,10 +102,9 @@
 				</div>
 			</div>
 
-			
-
 		<!-- Bootstrap core JavaScript placed here in order to load faster the pages -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 	</body>
 

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
-
+			
+			<meta charset="UTF-8">
+			
 			<title>Fitness Tracker</title>
 			
 			<!-- Ensures proper rendenring across devices -->
@@ -30,56 +32,97 @@
 			<!-- Navagation bar -->
 			<div class="container">
 				<div class="navbar">
-          			<ul class="nav nav-justified">
+          			<ul class="nav nav-pills nav-justified">
             			<li class="active"><a href="index.html">Home</a></li>
+            			
+            			<li class="dropdown">
+            				<a  href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+            				<ul class="dropdown-menu dropdown-menu-right">
+         						<li><a href="showprogress.html">Show Progress</a></li>
+         						<li><a href="definegoal.html">Define New Goal </a></li>
+      						</ul>	
+            			</li>
+            			            			            			
             			<li><a href="registerexercise.html">Register Exercise</a></li>
-            			<li><a href="registerfood.html">Register Food</a></li>
-            			<li><a href="definegoal.html">Define New Goal </a></li>
-            			<li><a href="showprogress.html">Show Progress</a></li>
+            			<li><a href="registerfood.html">Register Meal</a></li>
             			<li><a href="#">Log out</a></li>
           			</ul>
         		</div>
 			</div>
 			
-			<!-- Page Content -->	
-			<div class="row-fluid" style="margin-left: auto; margin-right: auto; width: 500px; ">
-				<form class="form well">
-					<div class="form-group">
-						<label for="name"> Name </label>
-        				<input type="text" class="form-control" placeholder="First" required autofocus>
-        			</div>
+			<!-- Page Content -->
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-8 col-xs-offset-2">
+						
+						<form class="form well"> 
 
-					<div class="form-group">
-        				<input type="text" class="form-control" placeholder="Last" required>
-       				</div>
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="firstName"> Name </label>								
+        								<input type="text" class="form-control" placeholder="First Name" required autofocus>
+        							</div>
+								</div>
 
-					<div class="form-group">
-						<label for="email"> Email </label>
-        				<input type="email" class="form-control" placeholder="Email Address" required>
-        			</div>
-        				
-					<div class="form-group">
-						<label for="name"> Choose your Username </label>
-        				<input type="text" class="form-control" placeholder="Username" required>
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label class="sr-only" for="lastName"> Last Name </label>								
+        								<br> <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+        							</div>
+								</div>
+							</div>						
+
+							<div class="row">								
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="email"> Email </label>
+        								<input type="email" class="form-control" placeholder="Email Address" required>
+        							</div>
+								</div>
+							</div>						
+
+							<div class="row">								
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="user"> Choose your Username </label>
+        								<input type="text" class="form-control" placeholder="Username" required>
+									</div>
+								</div>
+							</div>						
+
+							<div class="row">								
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="psw"> Create a Password </label>
+        								<input type="password" class="form-control" placeholder="Password" required>
+									</div>
+								</div>
+							</div>						
+
+							<div class="row">								
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="confirmPsw"> Confirm your Password </label>
+        								<input type="password" class="form-control" placeholder="Password" required>
+									</div>
+								</div>
+							</div>						
+
+							<div class="row">								
+								<div class="col-xs-4 col-xs-offset-4">
+			        				<button class="btn btn-default btn-block" type="submit">Register</button>
+								</div>
+							</div>						
+						
+						</form>						
 					</div>
+				</div>
+			</div>	
 
-					<div class="form-group">
-						<label for="name"> Create a Password </label>
-        				<input type="password" class="form-control" placeholder="Password" required>
-					</div>
-
-					<div class="form-group">
-						<label for="name"> Confirm your Password </label>
-        				<input type="password" class="form-control" placeholder="Password" required>
-					</div>
-				    
-			        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign</button>
-	
-				</form>
-			</div>			
 			
 			<!-- Footer -->
-			<div class="footer navbar-fixed-bottom">
+			<div class="panel-footer text-center">
 				<div class="container">
 						
 					<p class="text-muted">
@@ -89,10 +132,9 @@
 				</div>
 			</div>
 
-			
-
 		<!-- Bootstrap core JavaScript placed here in order to load faster the pages -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 	</body>
 

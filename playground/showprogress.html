@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
+			
+			<meta charset="UTF-8">
 
 			<title>Fitness Tracker</title>
 			
@@ -30,12 +32,19 @@
 			<!-- Navagation bar -->
 			<div class="container">
 				<div class="navbar">
-          			<ul class="nav nav-justified">
+          			<ul class="nav nav-pills nav-justified">
             			<li class="active"><a href="index.html">Home</a></li>
+            			
+            			<li class="dropdown">
+            				<a  href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+            				<ul class="dropdown-menu dropdown-menu-right">
+         						<li><a href="showprogress.html">Show Progress</a></li>
+         						<li><a href="definegoal.html">Define New Goal </a></li>
+      						</ul>	
+            			</li>
+            			            			            			
             			<li><a href="registerexercise.html">Register Exercise</a></li>
-            			<li><a href="registerfood.html">Register Food</a></li>
-            			<li><a href="definegoal.html">Define New Goal </a></li>
-            			<li><a href="showprogress.html">Show Progress</a></li>
+            			<li><a href="registerfood.html">Register Meal</a></li>
             			<li><a href="#">Log out</a></li>
           			</ul>
         		</div>
@@ -44,15 +53,15 @@
 			<!-- Page Content -->	
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-6 text-center">
 						<h1>Exercise Progress(Chart)</h1>
-						<iframe src="" width="500px" height=auto align="left"> 
+						<iframe src="" width=auto height=auto> 
 						</iframe>
 					</div>
 						
-					<div class="col-xs-6">
+					<div class="col-xs-6 text-center">
 						<h1>Weight Progress(Chart)</h1>
-						<iframe src="" width="500px" height=auto align="left"> 
+						<iframe src="" width=auto height=auto> 
 						</iframe>
 					</div>
 				</div>			
@@ -60,7 +69,7 @@
 			</div>			
 			
 			<!-- Footer -->
-			<div class="footer navbar-fixed-bottom">
+			<div class="panel-footer text-center">
 				<div class="container">
 						
 					<p class="text-muted">
@@ -70,10 +79,9 @@
 				</div>
 			</div>
 
-			
-
 		<!-- Bootstrap core JavaScript placed here in order to load faster the pages -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 	</body>
 
