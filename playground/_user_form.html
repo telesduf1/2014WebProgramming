@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+
+		<title>Fitness Tracker</title>
+
+		<!-- Ensures proper rendenring across devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0, maximum-scale=1.0">
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+	</head>
+
+	<body>
+
+		<!-- Logo -->
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 text-right">
+						<h1 class="text-muted"> Fitness Tracker Account </h1>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Page Content -->
+		<div class="container well">
+			<div class="col-xs-10 col-xs-offset-3">
+				<div class="row">
+					<form class="form-horizontal">
+						<h2 class=" text-muted"> Personal Information </h2>
+						<div class="row">
+							<div class="form-group">
+								<label for="firstname" class="col-xs-2 control-label"> First Name: </label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="First Name" id="firstname" required autofocus>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="lastname" class="col-xs-2 control-label"> Last Name: </label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="Last Name" id="lastname" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="gender" class="col-xs-2 control-label"> Gender: </label>
+								<div class="col-xs-5">
+									<label class="checkbox-inline">
+										<input type="checkbox" id="#male" value="Male">
+										Male </label>
+									<label class="checkbox-inline">
+										<input type="checkbox" id="#female" value="Female">
+										Female </label>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="weight" class="col-xs-2 control-label"> Current Weight: </label>
+								<div class="col-xs-5">
+									<input type="number" class="form-control" id="currentWeight" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="height" class="col-xs-2 control-label"> Height: </label>
+								<div class="col-xs-5">
+									<input type="number" class="form-control" id="height" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="birthDate" class="col-xs-2 control-label"> Date of Birth: </label>
+								<div class="col-xs-5">
+									<input type="date" class="form-control" id="bthDay" required>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+				<div class="row">
+					<form class="form-horizontal">
+
+						<h2 class=" text-muted"> Initial Goal </h2>
+						<div class="row">
+							<div class="form-group">
+								<label for="dietGoal" class="col-xs-2 control-label"> Diet Goal: </label>
+								<div class="col-xs-5">
+									<select class="form-control">
+										<option></option>
+										<option>Wheight Loss</option>
+										<option>Maintain current wheight </option>
+										<option>Wheight Loss</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="goalWheight" class="col-xs-2 control-label"> Goal Wheight: </label>
+								<div class="col-xs-5">
+									<input type="number" class="form-control" id="goalWeight" required>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				</div>
+
+				<div class="row">
+					<form class="form-horizontal">
+
+						<h2 class=" text-muted"> Account </h2>
+						<div class="row">
+							<div class="form-group">
+								<label for="username" class="col-xs-2 control-label"> Choose your Username: </label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="Username" id="username" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="form-group">
+								<label for="password" class="col-xs-2 control-label"> Create a Password: </label>
+								<div class="col-xs-5">
+									<input type="password" class="form-control" placeholder="Password" id="psw" required>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="confirmPassword" class="col-xs-2 control-label"> Confirm your Password: </label>
+								<div class="col-xs-5">
+									<input type="password" class="form-control" placeholder="Password" id="confirmPsw" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<label for="email" class="col-xs-2 control-label"> Email Adress: </label>
+								<div class="col-xs-5">
+									<input type="text" class="form-control" placeholder="Email" id="email" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-2 col-xs-offset-5">
+								<button class="btn btn-default btn-block" type="submit">
+									Register
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="login">
+			<div class="footer text-right">
+				<div class="container">
+
+					<p class="text-muted">
+						<small>Fitness Tracker Copyright &copy; by telesduf1</small>
+					</p>
+
+				</div>
+			</div>
+		</footer>
+
+		<!-- Bootstrap core JavaScript placed here in order to load faster the pages -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="content/js/main.js"></script>
+
+	</body>
+
+</html>

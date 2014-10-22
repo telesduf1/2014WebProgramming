@@ -1,110 +1,115 @@
 <!DOCTYPE html>
-	<html lang="en">
-		<head>
-			
-			<meta charset="UTF-8">
-			
-			<title>Fitness Tracker</title>
-   			<meta name="Author" content="Fabricio Teles">
-   			<meta name="Description" content="Screens">
-						
-			<!-- Ensures proper rendenring across devices -->
-			<meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0, maximum-scale=1.0">
+<html lang="en">
+	<head>
 
-			<!-- Bootstrap core CSS -->		
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">		
-			
-			<style>
+		<meta charset="UTF-8">
 
-			</style>
-		</head>
+		<title>Fitness Tracker</title>
+		<meta name="Author" content="Fabricio Teles">
+		<meta name="Description" content="Screens">
 
-		<body>
-			
-			<!-- Logo -->
-			<header>
-					
-				<div class="container">
-					<img src="http://a.ftscrt.com/static/images/splash/Sunrise_BG_01.jpg" class="img-responsive" alt="Fitness Tracker">
-				</div>
-					
-			</header>
-			
-			<!-- Navagation bar -->
+		<!-- Ensures proper rendenring across devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0, maximum-scale=1.0">
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+		<link href="content/css/progress.css" rel="stylesheet" media="screen">
+		<link href="content/css/main.css" rel="stylesheet" media="screen">
+	</head>
+
+	<body>
+		<!-- Navagation bar -->
+		<div id="main_nav"></div>
+
+		<!-- Header -->
+		<header>
 			<div class="container">
-				<div class="navbar">
-          			<ul class="nav nav-pills nav-justified">
-            			<li class="active"><a href="index.html">Home</a></li>
-            			
-            			<li class="dropdown">
-            				<a  href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
-            				<ul class="dropdown-menu dropdown-menu-right">
-         						<li><a href="showprogress.html">Show Progress</a></li>
-         						<li><a href="definegoal.html">Define New Goal </a></li>
-      						</ul>	
-            			</li>
-            			            			            			
-            			<li><a href="registerexercise.html">Register Exercise</a></li>
-            			<li><a href="registerfood.html">Register Meal</a></li>
-            			<li><a href="#">Log out</a></li>
-          			</ul>
-        		</div>
+				<h1>Fitness Tracker - Home</h1>
 			</div>
-			
-			<!-- Page Content -->	
-			<div class="container">
-				
-				<form class="form">
-					
-					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
-		        			<img src="https://cdn1.iconfinder.com/data/icons/adiante-apps-app-templates-incos-in-grey/128/app_type_gym_512px_GREY.png" alt="Sign In" class="col-xs-4 col-xs-offset-4">													
+		</header>
+
+		<!-- Page Content -->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3 col-sm-offset-3">
+					<div class="pie_progress" role="progressbar" data-goal="100" id="trackedFood">
+						<div class="pie_progress__number">
+							0%
+						</div>
+						<div class="pie_progress__label">
+							<!-- <span class=""> <img src="img/food.png" alt="Food Ingested Today" title="Food Ingested Today" > </span> -->
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
-        					<input type="text" class="form-control" placeholder="Username" required autofocus>
+						<div class="col-sm-12 text-center">
+							<p class="text-muted">
+								Food Ingested Today
+								<br>
+								0 cal/ 'Total' cal
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="pie_progress" role="progressbar" data-goal="100" id="trackedExercise">
+						<div class="pie_progress__number">
+							0%
+						</div>
+						<div class="pie_progress__label">
+							<!-- <span class=""> <img src="img/exercise.png" alt="Food Burned Today" title="Food Burned Today"> </span> -->
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
-        					<input type="password" class="form-control" placeholder="Password" required> <br>
+						<div class="col-sm-12 text-center">
+							<p class="text-muted">
+								Food Burned Today
+								<br>
+								0 cal/ 'Total' cal
+							</p>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
 
-					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
-        					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-						</div>
-					</div>        			
-
-					<div class="row">
-						<div class="col-xs-4 col-xs-offset-4">
-        					<a href="registeruser.html">Sign Up</a> 
-						</div>
-					</div>        			
-
-      			</form>				
-
-			</div>			
-			
-			<!-- Footer -->
+		<!-- Footer -->
+		<footer class="index">
 			<div class="panel-footer text-center">
 				<div class="container">
-						
+
 					<p class="text-muted">
 						<small>Fitness Tracker Copyright &copy; by telesduf1</small>
 					</p>
-				
+
 				</div>
 			</div>
+		</footer>
 
 		<!-- Bootstrap core JavaScript placed here in order to load faster the pages -->
- 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="content/js/jquery-asPieProgress.js"></script>
+		<script src="content/js/main.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function($) {
+				$("#main_nav").load("inc/nav.html", function() {
+					$(".home").addClass("active");
+				});
+				$('.pie_progress').asPieProgress({
+					'namespace' : 'pie_progress'
+				});
+
+				$("#trackedFood").asPieProgress('go', 50);
+
+				$("#trackedExercise").asPieProgress('go', 60);
+
+			});
+		</script>
 
 	</body>
 

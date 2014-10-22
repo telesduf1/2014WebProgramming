@@ -1,0 +1,57 @@
+body {
+	background-color: #DCDCDC;
+	padding-top: 40px;
+	min-height: 2000px;
+}
+
+header{
+	padding: 100px 0;
+	color: #fff;
+	background-color: #000000;
+    background-attachment: scroll;
+    background-image: url(http://cdn.thedroidguy.com/wp-content/uploads/2014/01/atlas.jpg); /*url(https://d13yacurqjgara.cloudfront.net/users/296358/screenshots/1507834/fitness-dribbble.gif);*/
+   	background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.header{
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+@media(max-width:468px) {
+    .header{
+        padding-top: 50px;
+        padding-bottom: 0;
+    }
+}
+
+section:nth-of-type(2n +1) {
+	background-color: #F5F5F5;
+}
+
+section {
+    padding: 100px 0;
+}
+
+section h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 40px;
+}
+
+section p{
+    margin-bottom: 75px;
+    text-transform: none;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+@media(min-width:768px) {
+    section {
+        padding: 150px 0;
+    }
+}

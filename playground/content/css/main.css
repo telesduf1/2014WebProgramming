@@ -1,0 +1,20 @@
+body {
+	
+}
+
+footer{
+	background-color: #f5f5f5;
+	bottom: 0;
+	height: 60px;
+	width: 100%;
+}
+
+footer.login{
+	position: relative;
+}
+
+footer.index{
+	position: absolute;
+}
+
+
