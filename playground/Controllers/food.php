@@ -1,10 +1,10 @@
-<?php
+<?
 ini_set('display_errors', 1);
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null ;
 $method = isset($_SERVER['HTTP_METHOD']) ? $_REQUEST['HTTP_METHOD'] : 'GET' ;
-$format = isset($_REQUEST['format']) ? $_REQUEST['format'] : 'web' ;
 $view = null;
+$format = isset($_REQUEST['format']) ? $_REQUEST['format'] : null ;
 
 switch ($action. '_' . $method) {
 	case 'create_GET':
@@ -48,7 +48,6 @@ switch ($format) {
 		break;
 
 	case 'web':
-		$view = 'food/edit.php';
 		break;
 
 	default:

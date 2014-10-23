@@ -1,7 +1,7 @@
 <!-- Header -->
 <header>
 	<div class="container">
-		<h1>Fitness Tracker - Register Food</h1>
+		<h1>Fitness Tracker - Food Records</h1>
 	</div>
 </header>
 
@@ -58,7 +58,7 @@
 
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-6 text-right">
-			<a class="btn btn-default" data-toggle="modal" data-target="#myModal" href="?action=edit&format=plain"> <span class="glyphicon glyphicon-plus"></span> Add New Meal </a>
+			<a class="btn btn-default" data-toggle="modal" data-target="#myModal" href="?action=create&format=plain"> <span class="glyphicon glyphicon-plus"></span> Add New Meal </a>
 		</div>
 	</div>
 </div>
@@ -76,10 +76,6 @@
 	</div>
 </footer>
 
-<!-- Bootstrap core JavaScript placed here in order to load faster the pages -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="content/js/main.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#myModal').on('hidden.bs.modal');
