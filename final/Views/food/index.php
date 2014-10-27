@@ -51,33 +51,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				<? foreach ($model as $rs): ?>
 				<tr>
-					<td>Pizza</td>
-					<td>500</td>
-					<td>18.0</td>
-					<td>5.0</td>
-					<td>2.0</td>
-					<td>3.0</td>
-					<td> Sunday 9:15am</td>
+					<td><?=$rs['Name']?></td>
+					<td><?=$rs['Calories']?></td>
+					<td><?=$rs['Fat']?></td>
+					<td><?=$rs['Carbs']?></td>
+					<td><?=$rs['Fiber']?></td>
+					<td><?=$rs['Time']?></td>
 				</tr>
-				<tr>
-					<td>Yogurt</td>
-					<td>80</td>
-					<td>0.5</td>
-					<td>0.0</td>
-					<td>0.0</td>
-					<td>3.0</td>
-					<td> Sunday 10:15am</td>
-				</tr>
-				<tr>
-					<td>Slim-Bar</td>
-					<td>100</td>
-					<td>2.0</td>
-					<td>5.0</td>
-					<td>5.0</td>
-					<td>3.0</td>
-					<td> Sunday 11:15am</td>
-				</tr>
+				<? endforeach; ?>
 			</tbody>
 		</table>
 	</div>

@@ -1,6 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 
+include __DIR__ . '/../inc/_all.php';
+
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null ;
 $method = isset($_SERVER['HTTP_METHOD']) ? $_REQUEST['HTTP_METHOD'] : 'GET' ;
 $view = null;
@@ -34,6 +36,7 @@ switch ($action. '_' . $method) {
 	case 'index_GET':
 
 	default:
+		$model = Food::Get();
 		$view = 'food/index.php';	
 		break;
 }
@@ -44,7 +47,7 @@ switch ($format) {
 		break;
 	
 	case 'json':
-		echo json_encode(model);
+		echo json_encode($model);
 		break;
 
 	case 'web':
