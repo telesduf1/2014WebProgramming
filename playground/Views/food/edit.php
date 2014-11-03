@@ -43,7 +43,7 @@
 			<div class="form-group">
 				<label for="category" class="col-xs-2 control-label"> Category </label>
 				<div class="col-xs-5">
-					<select class="form-control">
+					<select class="form-control"   name="<?=$model['Category']?>">
 						<option></option>
 						<option>Breakfast</option>
 						<option>Brunch</option>
