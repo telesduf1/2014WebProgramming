@@ -29,28 +29,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Rice</td>
-							<td>200</td>
-							<td>Lunch</td>
-							<td>02/10/2014</td>
-							<td>12:15 AM</td>
-						</tr>
-						<tr>
-							<td>Steak</td>
-							<td>100</td>
-							<td>Lunch</td>
-							<td>02/10/2014</td>
-							<td>12:15 AM</td>
-						</tr>
-						<tr>
-							<td>Beans</td>
-							<td>150</td>
-							<td>Lunch</td>
-							<td>02/10/2014</td>
-							<td>12:15 AM</td>
-						</tr>
-					</tbody>
+              	<? foreach ($model as $rs): ?>
+                <tr>
+                  <td><?=$rs['Name'] ?></td>
+                  <td><?=$rs['Calories'] ?></td>
+                  <td><?=$rs['Date'] ?></td>
+                  <td><?=$rs['Time'] ?></td>
+                  <td>
+					<a title="Edit" class="btn btn-default btn-sm toggle-modal" data-target="#myModal" href="?action=edit&id=<?=$rs['Id'] ?>">
+						<i class="glyphicon glyphicon-pencil"></i>
+					</a>                  	
+                  </td>
+                </tr>
+                <? endforeach; ?>
+              </tbody>
 				</table>
 			</div>
 		</div>
@@ -79,5 +71,5 @@
 <script type="text/javascript">
 	$(function() {
 		$('#myModal').on('hidden.bs.modal');
-	}); 
+	});
 </script>

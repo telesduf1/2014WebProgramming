@@ -1,4 +1,5 @@
-<div class="modal-header">
+<div class="modal-header" action="?action=save" method="post" >
+	<input type="hidden" name="id" value="<?=$model['Id']?>" />
 	<button type="button" class="close" data-dismiss="modal">
 		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 	</button>
@@ -62,15 +63,13 @@
 				</div>
 			</div>
 		</div>
-	</form>
 </div>
 
 <div class="modal-footer">
 	<div class="row">
 		<div class="col-xs-9 text-right">
-			<button type="submit" class="btn btn-default">
-				Register
-			</button>
+			<input type="submit" name="submit" class="btn btn-default" value="Register" />
 		</div>
 	</div>
 </div>
+</form>

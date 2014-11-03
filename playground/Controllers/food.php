@@ -1,40 +1,50 @@
 <?
 ini_set('display_errors', 1);
 
+include_once __DIR__ . '/../inc/_all.php';
+
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null ;
-$method = isset($_SERVER['HTTP_METHOD']) ? $_REQUEST['HTTP_METHOD'] : 'GET' ;
+$method = isset($_POST['submit']) ? 'POST' : 'GET';
+$format = isset($_REQUEST['format']) ? $_REQUEST['format'] : 'web';
 $view = null;
-$format = isset($_REQUEST['format']) ? $_REQUEST['format'] : null ;
 
 switch ($action. '_' . $method) {
 	case 'create_GET':
+		$model = Food::Blank();
 		$view = 'food/edit.php';
 		break;
 	
-	case 'create_POST':
-
+	case 'save_POST':
+		// Validate
+		if($_REQUEST['id'])
+		{
+			//update
+			//Food::Save($_REQUEST);
+		}else{
+			//create
+			//Food::Save($_REQUEST);
+		}
+		// if error
+		//		display error message
+		//		re display form
+		// else
+		//		congratulate user
+		//		display list including edited/new frow
 		break;
-
-	case 'update_GET':
-		$view = 'food/edit.php';
+	case 'edit_GET':
+		$model = Food::Get($_REQUEST['Id']);
+		$view = "food/edit.php";		
 		break;
-
-	case 'update_POST':
-
-		break;
-
 	case 'delete_GET':
-
+		$view = "food/delete.php";		
 		break;
-
 	case 'delete_POST':
-
+		//	Proccess input
 		break;
-
 	case 'index_GET':
-
 	default:
-		$view = 'food/index.php';	
+		$model = Food::Get();
+		$view = 'food/index.php';		
 		break;
 }
 
@@ -48,7 +58,6 @@ switch ($format) {
 		break;
 
 	case 'web':
-		break;
 
 	default:
 		include __DIR__ . '/../Views/shared/_Template.php';	
