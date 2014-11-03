@@ -27,14 +27,14 @@
 			<div class="form-group">
 				<label for="date" class="col-xs-2 control-label"> Date </label>
 				<div class="col-xs-5">
-					<input type="date" class="form-control" required>
+					<input type="date" class="form-control" required value="<?=$model['Date']?>">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="time" class="col-xs-2 control-label"> Time </label>
 				<div class="col-xs-5">
-					<input type="time" class="form-control" required>
+					<input type="time" class="form-control" required value="<?=$model['Time']?>">
 				</div>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 			<div class="form-group">
 				<label class="col-xs-2 control-label" for="cal"> Cal </label>
 				<div class="col-xs-5">
-					<input type="number" class="form-control" required>
+					<input type="number" class="form-control" required value="<?=$model['Calories']?>">
 				</div>
 			</div>
 		</div>

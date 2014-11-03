@@ -32,7 +32,7 @@ switch ($action. '_' . $method) {
 		//		display list including edited/new frow
 		break;
 	case 'edit_GET':
-		$model = Food::Get($_REQUEST['Id']);
+		$model = Food::Get($_REQUEST['id']);
 		$view = "food/edit.php";		
 		break;
 	case 'delete_GET':
@@ -58,7 +58,7 @@ switch ($format) {
 		break;
 
 	case 'web':
-
+		
 	default:
 		include __DIR__ . '/../Views/shared/_Template.php';	
 		break;

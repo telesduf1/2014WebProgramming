@@ -33,6 +33,7 @@
                 <tr>
                   <td><?=$rs['Name'] ?></td>
                   <td><?=$rs['Calories'] ?></td>
+                  <td><?=$rs['Category'] ?></td>
                   <td><?=$rs['Date'] ?></td>
                   <td><?=$rs['Time'] ?></td>
                   <td>
