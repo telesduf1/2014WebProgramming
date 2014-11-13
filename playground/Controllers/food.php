@@ -36,10 +36,18 @@ switch ($action. '_' . $method) {
 		$view = "food/edit.php";		
 		break;
 	case 'delete_GET':
+		$model = Food::Get($_REQUEST['id']);
 		$view = "food/delete.php";		
 		break;
 	case 'delete_POST':
-		//	Proccess input
+		$errors = Food::Delete($_REQUEST['id']);
+		if($errors){
+				$model = Food::Get($_REQUEST['id']);
+				$view = "food/delete.php";
+		}else{
+				header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
+				die();			
+		}
 		break;
 	case 'index_GET':
 	default:

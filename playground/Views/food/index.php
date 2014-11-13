@@ -26,6 +26,7 @@
 							<th>Category</th>
 							<th>Date</th>
 							<th>Time</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,8 +38,11 @@
                   <td><?=$rs['Date'] ?></td>
                   <td><?=$rs['Time'] ?></td>
                   <td>
-					<a title="Edit" class="btn btn-default btn-sm toggle-modal" data-target="#myModal" href="?action=edit&id=<?=$rs['Id'] ?>">
+					<a title="Edit" class="btn btn-default toggle-modal" data-toggle="#myModal" data-target="#myModal" href="?action=edit&id=<?=$rs['Id'] ?>">
 						<i class="glyphicon glyphicon-pencil"></i>
+					</a>
+					<a title="Delete" class="btn btn-default btn-sm toggle-modal" data-target="#myModal" href="?action=delete&id=<?=$rs['Id']?>">
+						<i class="glyphicon glyphicon-trash"></i>
 					</a>                  	
                   </td>
                 </tr>
@@ -71,6 +75,14 @@
 
 <script type="text/javascript">
 	$(function() {
-		$('#myModal').on('hidden.bs.modal');
+		$(".toggle-modal").on('click', function(event){
+			event.preventDefault();
+			$("#myModal .modal-content").load(this.href + "&format=plain");
+			$("#myModal").modal("show");
+		})
+								
+		$('#myModal').on('hidden.bs.modal', function (e) {
+			$("#myAlert").show();
+		})
 	});
 </script>
