@@ -7,6 +7,5 @@ app/[Cc]onfig/database.php
 !empty
 final/inc/_password.php
 playground/inc/_password.php
-phpMyAdmin
 playground/inc/_password.php
 final/inc/_password.php
