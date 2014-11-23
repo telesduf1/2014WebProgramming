@@ -1,17 +1,15 @@
 <?php
 
-/**
- *
- */
-class Food {
+include_once __DIR__ . '/../inc/_all.php';
 
+class Food_Type {
 	public static function Blank() {
-		return array('Id' => null, 'Name' => null, 'Calories' => null, 'Fat' => null, 'Carbs' => null, 'Protein' => null, 'Food_Category_id' => null);
+		return array('id' => null, 'Name' => null);
 	}
 
 	public static function Get($id = null) {
-		$sql = "SELECT * FROM Food";
-
+		$sql = "SELECT * FROM Food_Category";
+		
 		if ($id) {
 			$sql .= " WHERE id=$id ";
 			$ret = FetchAll($sql);
@@ -27,13 +25,13 @@ class Food {
 		$row2 = escape_all($row, $conn);
 		$row2['Time'] = date('Y-m-d H:i:s', strtotime($row2['Time']));
 		if (!empty($row['id'])) {
-			$sql = "Update Food
+			$sql = "Update Food_Category
 							Set Name='$row2[Name]', Type_id='$row2[Type_id]', Calories='$row2[Calories]',
 								Fat='$row2[Fat]', Carbs='$row2[Carbs]', Fiber='$row2[Fiber]', Time='$row2[Time]'
 						WHERE id = $row2[id]
 						";
 		} else {
-			$sql = "INSERT INTO Food
+			$sql = "INSERT INTO Food_Category
 						(Name, Type_id, Calories, Fat, Carbs, Fiber, Time, created_at, UserId)
 						VALUES ('$row2[Name]', '$row2[Type_id]', '$row2[Calories]', '$row2[Fat]', '$row2[Carbs]', '$row2[Fiber]', '$row2[Time]', Now(), 3 ) ";
 		}
@@ -54,7 +52,7 @@ class Food {
 
 	static public function Delete($id) {
 		$conn = GetConnection();
-		$sql = "DELETE FROM Food WHERE id = $id";
+		$sql = "DELETE FROM Food_Category WHERE id = $id";
 		$results = $conn -> query($sql);
 		$error = $conn -> error;
 		$conn -> close();

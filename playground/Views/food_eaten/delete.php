@@ -13,8 +13,8 @@
 				</ul>
   			</div>
   		<? endif; ?>
-  		
-  		<h5>Are you sure you want to delete <?=$model['Name']?> from <?=$model['Time']?>?</h5>
+  		<? $food = Food::Get($model['Food_id']);?>
+  		<h5>Are you sure you want to delete <?=$food['name']?> from <?=$model['Time']?>?</h5>
   		
   	</div>
 	<div class="modal-footer">
