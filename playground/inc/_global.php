@@ -9,6 +9,12 @@ function GetConnection()
 	return $conn;
 }
 
+function my_print($x){
+	?><pre><?
+		print_r($x);
+	?></pre><?
+}
+
 function FetchAll($sql){
 		$ret = array();
 		$conn = GetConnection();

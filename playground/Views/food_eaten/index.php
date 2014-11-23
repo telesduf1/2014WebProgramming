@@ -89,7 +89,7 @@
 			$("#myModal").modal("show");
 						
 			$.get(this.href + "&format=plain", function(data){
-				$("#foodForm").hide();    
+				//$("#foodForm").hide();    
     			$("#button").click(function(){
     				$("#foodForm").show();
     				$("#search").hide();

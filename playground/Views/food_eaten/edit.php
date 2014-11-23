@@ -12,9 +12,9 @@
 
 		<!--Meal Type -->
 		<div class="form-group">
-		    <label for="selType_id" class="col-xs-3 control-label">Meal Type</label>
+		    <label for="mealType_id" class="col-xs-3 control-label">Meal Type</label>
 		    <div class="col-xs-8">
-					<select class="form-control" name="Meal Type">
+					<select class="form-control" id="mealType_id" name="Meal_Type">
 		    			<? foreach (Meal_Type::Get() as $value): ?>
 							<option <?= $value['id'] == $model['Meal_Type_id'] ? 'selected' : '' ?> value="<?=$value['id']?>"><?=$value['name']?></option>
 						<? endforeach; ?>
@@ -26,7 +26,7 @@
 		<div class="form-group">
 			<label for="date" class="col-xs-3 control-label"> Date </label>
 			<div class="col-xs-8">
-				<input type="date" class="form-control" required value="<?=$model['Date'] ?>">
+				<input type="date" id="date" name="Date" class="form-control" required value="<?=$model['Date'] ?>">
 			</div>
 		</div>		
 				
@@ -34,44 +34,31 @@
 		<div class="form-group">
 			<label for="time" class="col-xs-3 control-label"> Time </label>
 			<div class="col-xs-8">
-				<input type="time" class="form-control" required value="<?=$model['Time'] ?>">
+				<input type="time" id="time" name="Time" class="form-control" required value="<?=$model['Time'] ?>">
 			</div>
 		</div>
 		
 		<!-- Search Food -->
-		<div class="form-group">
-			<div class="col-xs-8 col-xs-offset-3" id="search">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search Food">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-default">
-							Search
-						</button> 
-					</span>
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-default" id="button">
-							Add Food
-						</button> 
-					</span>
-				</div>
-			</div>
-		</div>
-		 
+		
+		<!-- Food Found -->
+		<input type="hidden" name="Food_Id" value="<? $foodFind=null ?>" /> 
+		
 		<div id="foodForm">
 			<? $model['Id'] == null ? $food = null :  $food = Food::Get($model['Food_id']);?>
 			<!-- Name -->
 			<div class="form-group">
-				<label for="date" class="col-xs-3 control-label"> Food Name </label>
+				<label for="foodName" class="col-xs-3 control-label"> Food Name </label>
 				<div class="col-xs-8">
-					<input type="text" class="form-control" required value="<?=$food['name'] ?>">
+					<input type="text" id="foodName" name="Food_Name" onkeyup="showResult(this.value)" class="form-control" required value="<?=$food['name'] ?>">
+					<div class="col-xs-8" id="livesearch"></div>
 				</div>
 			</div>			
 			
 			<!-- Food Category -->
 			<div class="form-group">
-		    	<label for="selType_id" class="col-xs-3 control-label">Food Type</label>
+		    	<label for="foodType_id" class="col-xs-3 control-label">Food Type</label>
 		    	<div class="col-xs-8">
-					<select class="form-control" name="Food Type">
+					<select class="form-control" id="foodType_id" name="Food_Type">
 		    			<? foreach (Food_Type::Get() as $value): ?>
 							<option <?= $value['id'] == $food['Food_Category_id'] ? 'selected' : '' ;?> value="<?=$value['id']?>"><?=$value['name']?></option>
 						<? endforeach; ?>
@@ -81,33 +68,33 @@
 			
 			<!-- Calories -->
 			<div class="form-group">
-				<label class="col-xs-3 control-label" for="cal"> Cal </label>
+				<label class="col-xs-3 control-label" for="calories"> Calories </label>
 				<div class="col-xs-8">
-					<input type="number" class="form-control" required value="<?=$food['calories'] ?>">
+					<input type="number" id="calories" name="Calories" class="form-control" required value="<?=$food['calories'] ?>">
 				</div>
 			</div>
 			
 			<!-- Fat -->
 			<div class="form-group">
-				<label class="col-xs-3 control-label" for="cal"> Fat </label>
+				<label class="col-xs-3 control-label" for="fat"> Fat </label>
 				<div class="col-xs-8">
-					<input type="number" class="form-control" required value="<?=$food['fat'] ?>">
+					<input type="number" id="fat" name="Fat" class="form-control" required value="<?=$food['fat'] ?>">
 				</div>
 			</div>			
 			
 			<!-- Carbs -->
 			<div class="form-group">
-				<label class="col-xs-3 control-label" for="cal"> Carbs </label>
+				<label class="col-xs-3 control-label" for="carbs"> Carbs </label>
 				<div class="col-xs-8">
-					<input type="number" class="form-control" required value="<?=$food['carbs'] ?>">
+					<input type="number" id="carbs" name="Carbs" class="form-control" required value="<?=$food['carbs'] ?>">
 				</div>
 			</div>
 						
 			<!-- Protein -->			
 			<div class="form-group">
-				<label class="col-xs-3 control-label" for="cal"> Protein </label>
+				<label class="col-xs-3 control-label" for="protein"> Protein </label>
 				<div class="col-xs-8">
-					<input type="number" class="form-control" required value="<?=$food['protein'] ?>">
+					<input type="number" id="protein" name="Protein" class="form-control" required value="<?=$food['protein'] ?>">
 				</div>
 			</div>			
 		</div>
@@ -120,14 +107,43 @@
 </form>
 
 <script>
-/*
-$(document).ready(function(){
-  
-    $("#foodForm").hide();
-    
-    $("#button").click(function(){
-    	$("#foodForm").show();
-  	});
-  
-});*/
+	function showResult(str) {
+  		if (str.length==0) { 
+    		document.getElementById("livesearch").innerHTML="";
+    		document.getElementById("livesearch").style.border="0px";
+    		return;
+  		}
+  		if (window.XMLHttpRequest) {
+    		// code for IE7+, Firefox, Chrome, Opera, Safari
+    		xmlhttp = new XMLHttpRequest();
+  		} else {  // code for IE6, IE5
+    		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  		}
+  		xmlhttp.onreadystatechange=function() {
+    		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      			document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
+      			//document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+    		}
+  		}
+  		
+  		xmlhttp.open("GET","../Views/food_eaten/livesearch.php?q="+str,true);
+  		
+  		xmlhttp.send();
+	}
+	/*
+	function updateForm(foodId) {
+		<?$foodId ?>= foodId <?;?>
+		
+		<?$foodFound = Food::Get( $foodId );?>
+		
+		<?$foodType = Food_Type::Get( $foodFound['Food_Type_id'] );?>
+		
+		document.getElementById("#foodName").value = " <?=$foodFound['name']?> ";
+		document.getElementById("#foodType_id").value = " <?=$foodType['name']?> ";
+		document.getElementById("#calories").value = " <?=$foodFound['calories']?> ";
+		document.getElementById("#fat").value = " <?=$foodFound['fat']?> ";
+		document.getElementById("#carbs").value = " <?=$foodFound['carbs']?> ";
+		document.getElementById("#protein").value = " <?=$foodFound['protein']?> ";								
+	} 
+	*/			
 </script>

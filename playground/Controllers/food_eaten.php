@@ -15,22 +15,22 @@ switch ($action. '_' . $method) {
 		break;
 	
 	case 'save_POST':
-		// Validate
-		if($_REQUEST['id'])
-		{
-			//update
-			//Food::Save($_REQUEST);
-		}else{
-			//create
-			//Food::Save($_REQUEST);
-		}
-		// if error
-		//		display error message
-		//		re display form
-		// else
-		//		congratulate user
-		//		display list including edited/new frow
-		break;
+			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
+			//$errors = Food::Validate($_REQUEST);
+			//if(!$errors){
+				$errors = Food_Eaten::Save($_REQUEST);
+			//}
+			
+			if(!$errors){
+				//my_print($errors);
+				header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
+				die();
+			}else{
+				my_print($errors);
+				$model = $_REQUEST;
+				$view = "food_eaten/edit.php";		
+			}
+			break;
 	case 'edit_GET':
 		$model = Food_Eaten::Get($_REQUEST['id']);
 		$view = "food_eaten/edit.php";		
