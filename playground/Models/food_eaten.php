@@ -26,15 +26,40 @@ class Food_Eaten {
 		$row2 = escape_all($row, $conn);
 		$row2['Time'] = date('Y-m-d H:i:s', strtotime($row2['Time']));
 		if (!empty($row['id'])) {
-			/*
-			$sql = "Update Food_Eaten
-							Set Name='$row2[Name]', Type_id='$row2[Type_id]', Calories='$row2[Calories]',
-								Fat='$row2[Fat]', Carbs='$row2[Carbs]', Fiber='$row2[Fiber]', Time='$row2[Time]'
+			if (empty($row['Food_Id'])) {					
+				//Update Food First			
+				
+				//Save Food First			
+				$sql = "INSERT INTO Food
+					(name, Food_Category_id, calories, fat, carbs, protein, created_at)
+					VALUES ('$row2[Food_Name]', '$row2[Food_Type]', '$row2[Calories]', '$row2[Fat]', '$row2[Carbs]', '$row2[Protein]', Now())";
+				
+				$conn -> query($sql);
+												
+				$sql = "Update Food_Eaten
+						Set Date='$row2[Date]', Time='$row2[Time]', Food_id=LAST_INSERT_ID(), Meal_Type_id='$row2[Meal_Type]'
 						WHERE id = $row2[id]
-						";*/
+					";				
+			} else {
+					
+				
+			$sql = "Update Food
+						
+					Set name='$row2[Food_Name]', calories='$row2[Calories]', fat='$row2[Fat]', 
+					carbs='$row2[Carbs]', protein='$row2[Protein]', Food_Category_id='$row2[Food_Type]'
+					WHERE id = $row2[Food_Id]";
+				
+			$conn -> query($sql);
+
+				$sql = "Update Food_Eaten
+						Set Date='$row2[Date]', Time='$row2[Time]', Food_id='$row2[Food_Id]', Meal_Type_id='$row2[Meal_Type]'
+						WHERE id = $row2[id]
+					";
+			}
 		} else {
 			//If food was not found	
 			if (empty($row2['Food_Id'])) {
+					
 				//Save Food First			
 				$sql = "INSERT INTO Food
 					(name, Food_Category_id, calories, fat, carbs, protein, created_at)

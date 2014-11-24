@@ -1,6 +1,8 @@
 <form class="form-horizontal" action="?action=save" method="post" >
 
 	<input type="hidden" name="id" value="<?=$model['Id'] ?>" />
+	<input type="hidden" id="foodId" name="Food_Id" value="<?=$model['Food_id'] ?>" />
+	
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">
 			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -38,11 +40,8 @@
 			</div>
 		</div>
 		
-		<!-- Search Food -->
-		
-		<!-- Food Found -->
-		<input type="hidden" name="Food_Id" value="<? $foodFind=null ?>" /> 
-		
+		<!-- Food Form -->
+				
 		<div id="foodForm">
 			<? $model['Id'] == null ? $food = null :  $food = Food::Get($model['Food_id']);?>
 			<!-- Name -->
@@ -50,7 +49,7 @@
 				<label for="foodName" class="col-xs-3 control-label"> Food Name </label>
 				<div class="col-xs-8">
 					<input type="text" id="foodName" name="Food_Name" onkeyup="showResult(this.value)" class="form-control" required value="<?=$food['name'] ?>">
-					<div class="col-xs-8" id="livesearch"></div>
+					<div class="col-xs-11" id="livesearch"></div>
 				</div>
 			</div>			
 			
@@ -107,6 +106,15 @@
 </form>
 
 <script>
+
+	function mouseOver(object) {
+		object.style.background = "#f3f3f3";
+	}
+	
+	function mouseOut(object) {
+		object.style.background = "white";
+	}
+	
 	function showResult(str) {
   		if (str.length==0) { 
     		document.getElementById("livesearch").innerHTML="";
@@ -122,7 +130,10 @@
   		xmlhttp.onreadystatechange=function() {
     		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
       			document.getElementById("livesearch").innerHTML = xmlhttp.responseText;
-      			//document.getElementById("livesearch").style.border="1px solid #A5ACB2;
+      			document.getElementById("livesearch").style.background="white";
+      			document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+      			document.getElementById("livesearch").style.position="absolute";
+      			document.getElementById("livesearch").style.zIndex="1";      			
     		}
   		}
   		
@@ -153,6 +164,9 @@
 				}
 
 				document.getElementById("livesearch").innerHTML = " ";
+				document.getElementById("livesearch").style.border="";
+      			document.getElementById("livesearch").style.position="";
+      			document.getElementById("livesearch").style.zIndex="0";
     		}
   		}
   		

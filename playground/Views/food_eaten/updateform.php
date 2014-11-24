@@ -14,6 +14,12 @@ $foodFound = Food::Get( $foodId );
 $foodType = Food_Type::Get( $foodFound['Food_Category_id'] );
 
 $response = array(
+
+				array(
+                	"id" => 'foodId',
+                	"value" => "".$foodFound['id'].""
+        		),
+        		
 				array(
                 	"id" => 'foodName',
                 	"value" => "".$foodFound['name'].""

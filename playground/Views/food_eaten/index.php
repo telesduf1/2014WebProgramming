@@ -43,8 +43,8 @@
                   <td><?=$food['fat'] ?></td>
                   <td><?=$food['carbs'] ?></td>
                   <td><?=$food['protein'] ?></td>
-                  <td><?=$rs['Date'] ?></td>
-                  <td><?=$rs['Time'] ?></td>
+                  <td><?=date('m/d/Y', strtotime($rs['Date'])) ?></td>
+                  <td><?=date('H:i', strtotime($rs['Time'])) ?></td>
                   <td>
 					<a title="Edit" class="btn btn-default toggle-modal1" data-toggle="#myModal" data-target="#myModal" href="?action=edit&id=<?=$rs['Id'] ?>">
 						<i class="glyphicon glyphicon-pencil"></i>

@@ -25,10 +25,10 @@ if (strlen($q)>0) {
 	
 	if ($hint=="") {
 		  $foodId = $value['id'];	
-          $hint ="<div onclick='updateForm(". $foodId .")' >" .$value['name'] . " </div>";
+          $hint ="<div id='divsearch' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)' onclick='updateForm(". $foodId .")' >" .$value['name'] . "  </div> ";
         } else {
           $foodId = $value['id'];	
-          $hint=$hint . "<br /><div onclick='updateForm(". $foodId .")' >" . $value['name'] . " </div>";
+          $hint=$hint . "<br /><div id='divsearch' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)' onclick='updateForm(". $foodId .")' >" . $value['name'] . " </div>";
         }
   }
   
