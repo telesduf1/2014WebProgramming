@@ -1,10 +1,10 @@
 <?php
 
 include_once __DIR__ . '/../../inc/_all.php';
-
+ini_set('display_errors', 1);
 //get the q parameter from URL
 $q=$_GET["q"];
-
+$foodId = 0;
 //lookup all links from the xml file if length of q>0
 if (strlen($q)>0) {
 
@@ -18,14 +18,17 @@ if (strlen($q)>0) {
 			$result = FetchAll($sql);
 		}
 
-	$hint=" ";
+	$hint = " ";
+	$foodId = " ";
 				
   	foreach($result as $value) {
 	
 	if ($hint=="") {
-          $hint ="<span onclick='updateForm(". $value['id'] .")' >" .$value['name'] . " </span>";
+		  $foodId = $value['id'];	
+          $hint ="<div onclick='updateForm(". $foodId .")' >" .$value['name'] . " </div>";
         } else {
-          $hint=$hint . "<br /><span onclick='updateForm(". $value['id'] .")' >" . $value['name'] . " </span>";
+          $foodId = $value['id'];	
+          $hint=$hint . "<br /><div onclick='updateForm(". $foodId .")' >" . $value['name'] . " </div>";
         }
   }
   

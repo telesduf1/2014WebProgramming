@@ -68,7 +68,7 @@
 			
 			<!-- Calories -->
 			<div class="form-group">
-				<label class="col-xs-3 control-label" for="calories"> Calories </label>
+				<label class="col-xs-3 control-label" for="calories" > Calories </label>
 				<div class="col-xs-8">
 					<input type="number" id="calories" name="Calories" class="form-control" required value="<?=$food['calories'] ?>">
 				</div>
@@ -121,8 +121,8 @@
   		}
   		xmlhttp.onreadystatechange=function() {
     		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-      			document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
-      			//document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+      			document.getElementById("livesearch").innerHTML = xmlhttp.responseText;
+      			//document.getElementById("livesearch").style.border="1px solid #A5ACB2;
     		}
   		}
   		
@@ -130,20 +130,33 @@
   		
   		xmlhttp.send();
 	}
-	/*
+	
 	function updateForm(foodId) {
-		<?$foodId ?>= foodId <?;?>
-		
-		<?$foodFound = Food::Get( $foodId );?>
-		
-		<?$foodType = Food_Type::Get( $foodFound['Food_Type_id'] );?>
-		
-		document.getElementById("#foodName").value = " <?=$foodFound['name']?> ";
-		document.getElementById("#foodType_id").value = " <?=$foodType['name']?> ";
-		document.getElementById("#calories").value = " <?=$foodFound['calories']?> ";
-		document.getElementById("#fat").value = " <?=$foodFound['fat']?> ";
-		document.getElementById("#carbs").value = " <?=$foodFound['carbs']?> ";
-		document.getElementById("#protein").value = " <?=$foodFound['protein']?> ";								
+		//alert(foodId);
+  		if (window.XMLHttpRequest) {
+    		// code for IE7+, Firefox, Chrome, Opera, Safari
+    		xmlhttp = new XMLHttpRequest();
+  		} else {  // code for IE6, IE5
+    		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  		}
+  		
+  		xmlhttp.onreadystatechange=function() {
+    		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      			
+      			x = JSON.parse(xmlhttp.responseText);
+      			
+				document.getElementById(x[2].id).value = x[2].value;
+
+				for	(index = 0; index < x.length; index++) {
+					//alert(x[index].id + " " + x[index].value);
+    				document.getElementById(x[index].id).value = x[index].value;
+				}
+
+				document.getElementById("livesearch").innerHTML = " ";
+    		}
+  		}
+  		
+  		xmlhttp.open("GET","../Views/food_eaten/updateform.php?q="+foodId,true);
+  		xmlhttp.send();									
 	} 
-	*/			
 </script>
