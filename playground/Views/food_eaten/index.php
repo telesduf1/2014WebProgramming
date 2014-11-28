@@ -6,7 +6,7 @@
 </header>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container content" ng-app="app" ng-controller='index'>
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" >
@@ -33,29 +33,27 @@
 							<th></th>
 						</tr>
 					</thead>
-					<tbody>
-              	<? foreach ($model as $rs): $meal = Meal_Type::Get($rs['Meal_Type_id']); $food = Food::Get($rs['Food_id']); $food_type = Food_Type::Get($food['Food_Category_id']); ?>
-                <tr>
-                  <td><?=$meal['name'] ?></td>                	                	
-                  <td><?=$food['name'] ?></td>
-                  <td><?=$food_type['name'] ?></td>
-                  <td><?=$food['calories'] ?></td>
-                  <td><?=$food['fat'] ?></td>
-                  <td><?=$food['carbs'] ?></td>
-                  <td><?=$food['protein'] ?></td>
-                  <td><?=date('m/d/Y', strtotime($rs['Date'])) ?></td>
-                  <td><?=date('H:i', strtotime($rs['Time'])) ?></td>
-                  <td>
-					<a title="Edit" class="btn btn-default toggle-modal1" data-toggle="#myModal" data-target="#myModal" href="?action=edit&id=<?=$rs['Id'] ?>">
-						<i class="glyphicon glyphicon-pencil"></i>
-					</a>
-					<a title="Delete" class="btn btn-default btn-sm toggle-modal" data-target="#myModal" href="?action=delete&id=<?=$rs['Id']?>">
-						<i class="glyphicon glyphicon-trash"></i>
-					</a>                  	
-                  </td>
-                </tr>
-                <? endforeach; ?>
-              </tbody>
+					<tbody>	
+						<tr ng-repeat="row in data | orderBy: 'Created'">
+                  			<td>{{row.Meal_Type}}</td>
+                  			<td>{{row.Food_Name}}</td>
+                  			<td>{{row.Food_Type}}</td>
+                  			<td>{{row.Calories}}</td>
+                  			<td>{{row.Fat}}</td>
+                  			<td>{{row.Carbs}}</td>
+                  			<td>{{row.Protein}}</td>
+                  			<td>{{row.Date | date : 'MM/dd/yyyy'}}</td>
+                  			<td>{{row.Time | date : 'h:mma'}}</td>
+                  			<td>
+								<a title="Edit" class="btn btn-default toggle-modal edit" data-toggle="#myModal" data-target="#myModal" href="?action=edit&id={{row.Id}}">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</a>
+								<a title="Delete" class="btn btn-default btn-sm toggle-modal delete" data-target="#myModal" href="?action=delete&id={{row.Id}}">
+									<i class="glyphicon glyphicon-trash"></i>
+								</a>                  	
+                  			</td>
+                		</tr>
+              		</tbody>
 				</table>
 			</div>
 		</div>
@@ -63,7 +61,7 @@
 
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-6 text-right">
-			<a class="btn btn-default toggle-modal" data-toggle="#myModal" data-target="#myModal" href="?action=create&format=plain"> <span class="glyphicon glyphicon-plus"></span> Add New Meal </a>
+			<a class="btn btn-default toggle-modal add" data-toggle="#myModal" data-target="#myModal" href="?action=create"> <span class="glyphicon glyphicon-plus"></span> Add New Meal </a>
 		</div>
 	</div>
 </div>
@@ -81,36 +79,57 @@
 	</div>
 </footer>
 
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script type="text/javascript" src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$(".toggle-modal").on('click', function(event){
+var app = angular.module('app', [])
+	.controller('index', function($scope, $http){
+		$http.get('?format=json')
+		.success(function(data){
+			$scope.data = data;
+		});
+	});
+
+	$(function(){
+		$(".food").addClass("active");
+								
+		var $mContent = $("#myModal .modal-content");
+		var defaultContent = $mContent.html();
+				
+								
+				
+		$('body').on('click', ".toggle-modal", function(event){
 			event.preventDefault();
-			$("#myModal .modal-content").load(this.href + "&format=plain");
 			$("#myModal").modal("show");
-						
+			var $btn = $(this);
+					
 			$.get(this.href + "&format=plain", function(data){
-				//$("#foodForm").hide();    
-    			$("#button").click(function(){
-    				$("#foodForm").show();
-    				$("#search").hide();
-  				});
-			});						
+				$mContent.html(data);
+				$mContent.find('form')
+				.on('submit', function(e){
+					//e.preventDefault();
+					$("#myModal").modal("hide");
+					/*
+					$.post(this.action + '&format=json', $(this).serialize(), function(data){								
+						alert(JSON.stringify(data));
+						if($btn.hasClass('edit')){
+							//$btn.closest('tr').replaceWith(tmpl(data));							
+						}
+						if($btn.hasClass('add')){
+							//$('tbody').append(tmpl(data));							
+						}
+						if($btn.hasClass('delete')){
+							$btn.closest('tr').remove();							
+						}
+					}, 'json');*/	
+				});
+			});
 		})
-		
-		$(".toggle-modal1").on('click', function(event){
-			event.preventDefault();
-			$("#myModal .modal-content").load(this.href + "&format=plain");
-			$("#myModal").modal("show");
-			
-			$.get(this.href + "&format=plain", function(data){
-				$("#search").hide();    
-			});			
-		})		
 								
 		$('#myModal').on('hidden.bs.modal', function (e) {
-			$("#myAlert").show();
+			$mContent.html(defaultContent);	    
 		})
-		
-	});	
+				
+	});
 	
 </script>

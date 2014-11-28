@@ -1,5 +1,5 @@
 <form class="form-horizontal" action="?action=save" method="post" >
-
+	<? //my_print($model); ?>
 	<input type="hidden" name="id" value="<?=$model['Id'] ?>" />
 	<input type="hidden" id="foodId" name="Food_Id" value="<?=$model['Food_id'] ?>" />
 	
@@ -43,13 +43,13 @@
 		<!-- Food Form -->
 				
 		<div id="foodForm">
-			<? $model['Id'] == null ? $food = null :  $food = Food::Get($model['Food_id']);?>
+			<? //$model['Id'] == null ? $food = null :  $food = Food::Get($model['Food_id']);?>
 			<!-- Name -->
 			<div class="form-group">
 				<label for="foodName" class="col-xs-3 control-label"> Food Name </label>
 				<div class="col-xs-8">
-					<input type="text" id="foodName" name="Food_Name" onkeyup="showResult(this.value)" class="form-control" required value="<?=$food['name'] ?>">
-					<div class="col-xs-11" id="livesearch"></div>
+					<input type="text" id="foodName" autocomplete="off" name="Food_Name" onkeyup="showResult(this.value)" class="form-control" required value="<?=$model['Food_Name'] ?>">
+					<ul style="overflow: auto; list-style-type:none;" class="col-xs-11" id="livesearch"></ul>
 				</div>
 			</div>			
 			
@@ -59,7 +59,7 @@
 		    	<div class="col-xs-8">
 					<select class="form-control" id="foodType_id" name="Food_Type">
 		    			<? foreach (Food_Type::Get() as $value): ?>
-							<option <?= $value['id'] == $food['Food_Category_id'] ? 'selected' : '' ;?> value="<?=$value['id']?>"><?=$value['name']?></option>
+							<option <?= $value['id'] == $model['Food_Category_id'] ? 'selected' : '' ;?> value="<?=$value['id']?>"><?=$value['name']?></option>
 						<? endforeach; ?>
 		    		</select>
 		    	</div>
@@ -69,7 +69,7 @@
 			<div class="form-group">
 				<label class="col-xs-3 control-label" for="calories" > Calories </label>
 				<div class="col-xs-8">
-					<input type="number" id="calories" name="Calories" class="form-control" required value="<?=$food['calories'] ?>">
+					<input type="number" id="calories" name="Calories" class="form-control" required value="<?=$model['Calories'] ?>">
 				</div>
 			</div>
 			
@@ -77,7 +77,7 @@
 			<div class="form-group">
 				<label class="col-xs-3 control-label" for="fat"> Fat </label>
 				<div class="col-xs-8">
-					<input type="number" id="fat" name="Fat" class="form-control" required value="<?=$food['fat'] ?>">
+					<input type="number" id="fat" name="Fat" class="form-control" required value="<?=$model['Fat'] ?>">
 				</div>
 			</div>			
 			
@@ -85,7 +85,7 @@
 			<div class="form-group">
 				<label class="col-xs-3 control-label" for="carbs"> Carbs </label>
 				<div class="col-xs-8">
-					<input type="number" id="carbs" name="Carbs" class="form-control" required value="<?=$food['carbs'] ?>">
+					<input type="number" id="carbs" name="Carbs" class="form-control" required value="<?=$model['Carbs'] ?>">
 				</div>
 			</div>
 						
@@ -93,7 +93,7 @@
 			<div class="form-group">
 				<label class="col-xs-3 control-label" for="protein"> Protein </label>
 				<div class="col-xs-8">
-					<input type="number" id="protein" name="Protein" class="form-control" required value="<?=$food['protein'] ?>">
+					<input type="number" id="protein" name="Protein" class="form-control" required value="<?=$model['Protein'] ?>">
 				</div>
 			</div>			
 		</div>
@@ -132,6 +132,7 @@
       			document.getElementById("livesearch").innerHTML = xmlhttp.responseText;
       			document.getElementById("livesearch").style.background="white";
       			document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+      			document.getElementById("livesearch").style.maxHeight="180px";
       			document.getElementById("livesearch").style.position="absolute";
       			document.getElementById("livesearch").style.zIndex="1";      			
     		}
@@ -164,9 +165,10 @@
 				}
 
 				document.getElementById("livesearch").innerHTML = " ";
-				document.getElementById("livesearch").style.border="";
+				document.getElementById("livesearch").style.border="0";
       			document.getElementById("livesearch").style.position="";
       			document.getElementById("livesearch").style.zIndex="0";
+      			document.getElementById("livesearch").style.maxHeight="0px";
     		}
   		}
   		

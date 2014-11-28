@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 include_once __DIR__ . '/../inc/_all.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null ;
-$method = isset($_POST['submit']) ? 'POST' : 'GET';
+$method = $_SERVER['REQUEST_METHOD'];
 $format = isset($_REQUEST['format']) ? $_REQUEST['format'] : 'web';
 $view = null;
 
@@ -16,21 +16,35 @@ switch ($action. '_' . $method) {
 	
 	case 'save_POST':
 			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
-			//$errors = Food::Validate($_REQUEST);
-			//if(!$errors){
+			$errors = 0;//Food::Validate($_REQUEST);
+			if(!$errors){
 				$errors = Food_Eaten::Save($_REQUEST);
-			//}
+			}
 			
 			if(!$errors){
-				//my_print($errors);
-				header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
+				my_print($errors);
+				//header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
+				if($format == 'json'){
+					?> <script>alert("oi");</script> <?
+					header("Location: ?action=edit&format=json&id=$_REQUEST[id]");
+				}else{
+					header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
+				}				
 				die();
 			}else{
-				my_print($errors);
+				//my_print($errors);
 				$model = $_REQUEST;
 				$view = "food_eaten/edit.php";		
 			}
 			break;
+	case 'delete':
+			if($_SERVER['REQUEST_METHOD'] == 'GET'){
+				//Promt
+			}else{
+				
+			}
+			break;
+		break;
 	case 'edit_GET':
 		$model = Food_Eaten::Get($_REQUEST['id']);
 		$view = "food_eaten/edit.php";		
@@ -62,7 +76,7 @@ switch ($format) {
 		break;
 	
 	case 'json':
-		echo json_encode(model);
+		echo json_encode($model);
 		break;
 
 	case 'web':

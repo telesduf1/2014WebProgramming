@@ -5,15 +5,21 @@ include_once __DIR__ . '/../inc/_all.php';
 class Food_Eaten {
 
 	public static function Blank() {
-		return array('Id' => null, 'Date' => date('Y-m-d'), 'Time' => date('h:m'), 'Food_id' => null, 'Users_id' => null, 'Meal_Type_id' => null);
+		return array('Id' => null, 'Date' => date('Y-m-d'), 'Time' => date('h:m'), 'Food_id' => null, 'Users_id' => null, 'Meal_Type_id' => null, 'Food_Name' => null, 'Calories' => null,
+					 'Fat' => null, 'Carbs' => null, 'Protein' => null );
 	}
 
 	public static function Get($id = null) {
-		$sql = "SELECT id as Id, created_at as Created, updated_at as Updated, date as Date, time as Time, Food_id, Users_id, Meal_Type_id  
-				FROM Food_Eaten ";
+		$sql = "SELECT fe.id as Id, fe.created_at as Created, fe.updated_at as Updated, fe.date as Date, fe.time as Time, fe.Food_id as Food_id, 
+					   fe.Users_id as User_id, fe.Meal_Type_id as Meal_Type_id, mt.name as Meal_Type, f.name as Food_Name, f.calories as Calories, 
+					   f.carbs as Carbs, f.fat as Fat, f.protein as Protein, ft.name as Food_Type, f.Food_Category_id as Food_Category_id 
+				FROM Food_Eaten fe, Food f, Meal_Type mt, Food_Category ft
+				WHERE fe.Meal_Type_id = mt.id
+				AND   fe.Food_id = f.id
+				AND   f.Food_Category_id = ft.id  ";
 
 		if ($id) {
-			$sql .= "WHERE id=$id ";
+			$sql .= "AND fe.id=$id ";
 			$ret = FetchAll($sql);
 			return $ret[0];
 		} else {
