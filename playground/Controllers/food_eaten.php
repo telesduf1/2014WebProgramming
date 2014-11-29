@@ -16,14 +16,13 @@ switch ($action. '_' . $method) {
 	
 	case 'save_POST':
 			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
-			$errors = 0;//Food::Validate($_REQUEST);
+			$errors = Food_Eaten::Validate($_REQUEST);
 			if(!$errors){
 				$errors = Food_Eaten::Save($_REQUEST);
 			}
 			
 			if(!$errors){
-				my_print($errors);
-				//header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
+				//my_print($errors);
 				if($format == 'json'){
 					?> <script>alert("oi");</script> <?
 					header("Location: ?action=edit&format=json&id=$_REQUEST[id]");

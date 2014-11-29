@@ -37,7 +37,7 @@ if (strlen($q)>0) {
 // Set output to "no suggestion" if no hint was found
 // or to the correct values
 if ($hint == " ") {
-  $response = "no food found";
+  $response = "";//"no food found";
 } else {
   $response = $hint;
 }

@@ -111,4 +111,17 @@ class Food_Eaten {
 		return $error ? array('sql error' => $error) : false;
 	}
 
+	static public function Validate($row)
+	{
+		$errors = array();
+		if(empty($row['Name'])) $errors['Name'] = "is required";
+		if(empty($row['Calories'])) $errors['Calories'] = "is required";
+		
+		if($row['Calories'] < 0 || $row['Calories'] > 300) $errors['Calories'] = "must be between 0 g and 300 g";
+		if($row['Fat'] < 0 || $row['Fat'] > 300) $errors['Fat'] = "must be between 0 g and 300 g";
+		if($row['Carbs'] < 0 || $row['Carbs'] > 300) $errors['Carbs'] = "must be between 0 g and 300 g";
+		if($row['Protein'] < 0 || $row['Protein'] > 300 ) $errors['Protein'] = "must be between 0 g and 300 g";
+		
+		return count($errors) > 0 ? $errors : false ;
+	}
 }

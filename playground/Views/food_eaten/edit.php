@@ -11,8 +11,19 @@
 	</div>
 
 	<div class="modal-body">
+		
+		<!-- Errors -->		
+		<? if(!empty($errors)): ?>
+  			<div class="alert alert-danger">
+  				<ul>
+  				<? foreach ($errors as $key => $value): ?>
+					  <li><?=$key?> <?= $value ?></li>
+				<? endforeach; ?>
+				</ul>
+  			</div>
+  		<? endif; ?>
 
-		<!--Meal Type -->
+		<!-- Meal Type -->
 		<div class="form-group">
 		    <label for="mealType_id" class="col-xs-3 control-label">Meal Type</label>
 		    <div class="col-xs-8">
@@ -45,11 +56,15 @@
 		<div id="foodForm">
 			<? //$model['Id'] == null ? $food = null :  $food = Food::Get($model['Food_id']);?>
 			<!-- Name -->
-			<div class="form-group">
+			<div class="form-group <?=!empty($errors['Name']) ? 'has-error has-feedback' : '' ?>">
 				<label for="foodName" class="col-xs-3 control-label"> Food Name </label>
 				<div class="col-xs-8">
 					<input type="text" id="foodName" autocomplete="off" name="Food_Name" onkeyup="showResult(this.value)" class="form-control" required value="<?=$model['Food_Name'] ?>">
-					<ul style="overflow: auto; list-style-type:none;" class="col-xs-11" id="livesearch"></ul>
+					<? if(!empty($errors['Name'])): ?>
+		      			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		      			<span class="help-block"><?=$errors['Name']?></span>
+		      		<? endif; ?>
+		      		<ul style="overflow: auto; list-style-type:none;" class="col-xs-11" id="foodsearch"></ul>
 				</div>
 			</div>			
 			
@@ -66,34 +81,50 @@
 		 	</div>
 			
 			<!-- Calories -->
-			<div class="form-group">
+			<div class="form-group <?=!empty($errors['Calories']) ? 'has-error has-feedback' : '' ?>">
 				<label class="col-xs-3 control-label" for="calories" > Calories </label>
 				<div class="col-xs-8">
 					<input type="number" id="calories" name="Calories" class="form-control" required value="<?=$model['Calories'] ?>">
+					<? if(!empty($errors['Calories'])): ?>
+		      			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		      			<span class="help-block"><?=$errors['Calories']?></span>
+		      		<? endif; ?>
 				</div>
 			</div>
 			
 			<!-- Fat -->
-			<div class="form-group">
+			<div class="form-group <?=!empty($errors['Fat']) ? 'has-error has-feedback' : '' ?>">
 				<label class="col-xs-3 control-label" for="fat"> Fat </label>
 				<div class="col-xs-8">
 					<input type="number" id="fat" name="Fat" class="form-control" required value="<?=$model['Fat'] ?>">
+					<? if(!empty($errors['Fat'])): ?>
+		      			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		      			<span class="help-block"><?=$errors['Fat']?></span>
+		      		<? endif; ?>
 				</div>
 			</div>			
 			
 			<!-- Carbs -->
-			<div class="form-group">
+			<div class="form-group <?=!empty($errors['Carbs']) ? 'has-error has-feedback' : '' ?>">
 				<label class="col-xs-3 control-label" for="carbs"> Carbs </label>
 				<div class="col-xs-8">
 					<input type="number" id="carbs" name="Carbs" class="form-control" required value="<?=$model['Carbs'] ?>">
+					<? if(!empty($errors['Carbs'])): ?>
+		      			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		      			<span class="help-block"><?=$errors['Carbs']?></span>
+		      		<? endif; ?>
 				</div>
 			</div>
 						
 			<!-- Protein -->			
-			<div class="form-group">
+			<div class="form-group <?=!empty($errors['Protein']) ? 'has-error has-feedback' : '' ?>">
 				<label class="col-xs-3 control-label" for="protein"> Protein </label>
 				<div class="col-xs-8">
 					<input type="number" id="protein" name="Protein" class="form-control" required value="<?=$model['Protein'] ?>">
+					<? if(!empty($errors['Protein'])): ?>
+		      			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+		      			<span class="help-block"><?=$errors['Protein']?></span>
+		      		<? endif; ?>
 				</div>
 			</div>			
 		</div>
@@ -117,8 +148,8 @@
 	
 	function showResult(str) {
   		if (str.length==0) { 
-    		document.getElementById("livesearch").innerHTML="";
-    		document.getElementById("livesearch").style.border="0px";
+    		document.getElementById("foodsearch").innerHTML="";
+    		document.getElementById("foodsearch").style.border="0px";
     		return;
   		}
   		if (window.XMLHttpRequest) {
@@ -129,16 +160,16 @@
   		}
   		xmlhttp.onreadystatechange=function() {
     		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-      			document.getElementById("livesearch").innerHTML = xmlhttp.responseText;
-      			document.getElementById("livesearch").style.background="white";
-      			document.getElementById("livesearch").style.border="1px solid #A5ACB2";
-      			document.getElementById("livesearch").style.maxHeight="180px";
-      			document.getElementById("livesearch").style.position="absolute";
-      			document.getElementById("livesearch").style.zIndex="1";      			
+      			document.getElementById("foodsearch").innerHTML = xmlhttp.responseText;
+      			document.getElementById("foodsearch").style.background="white";
+      			document.getElementById("foodsearch").style.border="1px solid #A5ACB2";
+      			document.getElementById("foodsearch").style.maxHeight="180px";
+      			document.getElementById("foodsearch").style.position="absolute";
+      			document.getElementById("foodsearch").style.zIndex="1";      			
     		}
   		}
   		
-  		xmlhttp.open("GET","../Views/food_eaten/livesearch.php?q="+str,true);
+  		xmlhttp.open("GET","../Views/food_eaten/foodsearch.php?q="+str,true);
   		
   		xmlhttp.send();
 	}
@@ -164,15 +195,14 @@
     				document.getElementById(x[index].id).value = x[index].value;
 				}
 
-				document.getElementById("livesearch").innerHTML = " ";
-				document.getElementById("livesearch").style.border="0";
-      			document.getElementById("livesearch").style.position="";
-      			document.getElementById("livesearch").style.zIndex="0";
-      			document.getElementById("livesearch").style.maxHeight="0px";
+				document.getElementById("foodsearch").innerHTML = "";
+				document.getElementById("foodsearch").style.border="0px";
+      			document.getElementById("foodsearch").style.position="relative";
+      			document.getElementById("foodsearch").style.zIndex="0";
     		}
   		}
   		
-  		xmlhttp.open("GET","../Views/food_eaten/updateform.php?q="+foodId,true);
+  		xmlhttp.open("GET","../Views/food_eaten/updatefoodform.php?q="+foodId,true);
   		xmlhttp.send();									
 	} 
 </script>
