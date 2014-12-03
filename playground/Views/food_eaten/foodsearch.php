@@ -5,7 +5,7 @@ ini_set('display_errors', 1);
 //get the q parameter from URL
 $q=$_GET["q"];
 $foodId = 0;
-//lookup all links from the xml file if length of q>0
+
 if (strlen($q)>0) {
 
 	$sql = "SELECT *  
@@ -25,10 +25,10 @@ if (strlen($q)>0) {
 	
 	if ($hint=="") {
 		  $foodId = $value['id'];	
-          $hint ="<li id='divsearch' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)' onclick='updateForm(". $foodId .")' >" .$value['name'] . "  </li> ";
+          $hint ="<div style='margin: 0px -15px; padding: 5px' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)' onclick='updateForm(". $foodId .")' >" .$value['name'] . "  </div> ";
         } else {
           $foodId = $value['id'];	
-          $hint=$hint . "<li id='divsearch' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)' onclick='updateForm(". $foodId .")' >" . $value['name'] . " </li>";
+          $hint=$hint . "<div style='margin: 0px -15px; padding: 5px' onmouseover='mouseOver(this)' onmouseout='mouseOut(this)' onclick='updateForm(". $foodId .")' >" . $value['name'] . " </div> ";
         }
   }
   

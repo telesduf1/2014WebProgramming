@@ -1,5 +1,5 @@
 <form class="form-horizontal" action="?action=save" method="post" >
-	<? //my_print($model); ?>
+	<? //my_print($errors); ?>
 	<input type="hidden" name="id" value="<?=$model['Id'] ?>" />
 	<input type="hidden" id="foodId" name="Food_Id" value="<?=$model['Food_id'] ?>" />
 	
@@ -64,7 +64,7 @@
 		      			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
 		      			<span class="help-block"><?=$errors['Name']?></span>
 		      		<? endif; ?>
-		      		<ul style="overflow: auto; list-style-type:none;" class="col-xs-11" id="foodsearch"></ul>
+		      		<div style="overflow: auto" class="col-xs-11" id="foodsearch"></div>
 				</div>
 			</div>			
 			

@@ -33,8 +33,6 @@ class Food_Eaten {
 		$row2['Time'] = date('Y-m-d H:i:s', strtotime($row2['Time']));
 		if (!empty($row['id'])) {
 			if (empty($row['Food_Id'])) {					
-				//Update Food First			
-				
 				//Save Food First			
 				$sql = "INSERT INTO Food
 					(name, Food_Category_id, calories, fat, carbs, protein, created_at)
@@ -47,8 +45,8 @@ class Food_Eaten {
 						WHERE id = $row2[id]
 					";				
 			} else {
-					
 				
+			//Update Food First				
 			$sql = "Update Food
 						
 					Set name='$row2[Food_Name]', calories='$row2[Calories]', fat='$row2[Fat]', 
@@ -77,7 +75,14 @@ class Food_Eaten {
 						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id)
 						VALUES ('$row2[Date]', '$row2[Time]', Now(),  LAST_INSERT_ID(), 1, '$row2[Meal_Type]') ";
 			} else {
+				//Update Food First			
+			$sql = "Update Food
+					Set name='$row2[Food_Name]', calories='$row2[Calories]', fat='$row2[Fat]', 
+					carbs='$row2[Carbs]', protein='$row2[Protein]', Food_Category_id='$row2[Food_Type]'
+					WHERE id = $row2[Food_Id]";
 				
+				$conn -> query($sql);
+								
 				$sql = "INSERT INTO Food_Eaten
 						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id)
 						VALUES ('$row2[Date]', '$row2[Time]', Now(),  '$row2[Food_Id]', 1, '$row2[Meal_Type]') ";
@@ -114,7 +119,7 @@ class Food_Eaten {
 	static public function Validate($row)
 	{
 		$errors = array();
-		if(empty($row['Name'])) $errors['Name'] = "is required";
+		if(empty($row['Food_Name'])) $errors['Name'] = "is required";
 		if(empty($row['Calories'])) $errors['Calories'] = "is required";
 		
 		if($row['Calories'] < 0 || $row['Calories'] > 300) $errors['Calories'] = "must be between 0 g and 300 g";

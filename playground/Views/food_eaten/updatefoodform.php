@@ -9,9 +9,13 @@ $q=$_GET["q"];
 
 $foodId = $q;
 
-$foodFound = Food::Get( $foodId );
+if(empty($foodId)){
+	$foodFound = Food::Blank();
+}
+else{
+	$foodFound = Food::Get( $foodId );	
+}
 
-$foodType = Food_Type::Get( $foodFound['Food_Category_id'] );
 
 $response = array(
 
