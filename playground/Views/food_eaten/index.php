@@ -66,19 +66,6 @@
 	</div>
 </div>
 
-<!-- Footer -->
-<footer class="index">
-	<div class="panel-footer text-center">
-		<div class="container">
-
-			<p class="text-muted">
-				<small>Fitness Tracker Copyright &copy; by telesduf1</small>
-			</p>
-
-		</div>
-	</div>
-</footer>
-
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 <script type="text/javascript" src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js"></script>
 <script type="text/javascript">
