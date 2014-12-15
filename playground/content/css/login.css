@@ -30,11 +30,6 @@ section h1{
     color: #2F4F4F;
 }
 
-input{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
 @media screen and (max-width: 768px) {
     section h1{
         font-size: 30px;
@@ -104,4 +99,9 @@ section p{
 
 #menu a:hover{
     color: #008080;
+}
+
+#sign{
+	margin-top: 20px;
+	margin-bottom: 20px;
 }

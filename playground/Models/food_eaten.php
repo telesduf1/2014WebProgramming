@@ -5,18 +5,21 @@ include_once __DIR__ . '/../inc/_all.php';
 class Food_Eaten {
 
 	public static function Blank() {
-		return array('Id' => null, 'Date' => date('Y-m-d'), 'Time' => date('h:m'), 'Food_id' => null, 'Users_id' => null, 'Meal_Type_id' => null, 'Food_Name' => null, 'Calories' => null,
+		return array('Id' => null, 'Date' => date('Y-m-d'), 'Time' => date('h:i'), 'Food_id' => null, 'Users_id' => null, 'Meal_Type_id' => null, 'Food_Name' => null, 'Calories' => null,
 					 'Fat' => null, 'Carbs' => null, 'Protein' => null );
 	}
 
 	public static function Get($id = null) {
+		$user_id = $_SESSION['USER_ID'];
+		
 		$sql = "SELECT fe.id as Id, fe.created_at as Created, fe.updated_at as Updated, fe.date as Date, fe.time as Time, fe.Food_id as Food_id, 
 					   fe.Users_id as User_id, fe.Meal_Type_id as Meal_Type_id, mt.name as Meal_Type, f.name as Food_Name, f.calories as Calories, 
 					   f.carbs as Carbs, f.fat as Fat, f.protein as Protein, ft.name as Food_Type, f.Food_Category_id as Food_Category_id 
 				FROM Food_Eaten fe, Food f, Meal_Type mt, Food_Category ft
 				WHERE fe.Meal_Type_id = mt.id
 				AND   fe.Food_id = f.id
-				AND   f.Food_Category_id = ft.id  ";
+				AND   f.Food_Category_id = ft.id 
+				AND   fe.Users_id = $user_id ";
 
 		if ($id) {
 			$sql .= "AND fe.id=$id ";
@@ -31,6 +34,9 @@ class Food_Eaten {
 		$conn = GetConnection();
 		$row2 = escape_all($row, $conn);
 		$row2['Time'] = date('Y-m-d H:i:s', strtotime($row2['Time']));
+		
+		$user_id = $_SESSION['USER_ID'];
+		
 		if (!empty($row['id'])) {
 			if (empty($row['Food_Id'])) {					
 				//Save Food First			
@@ -73,7 +79,7 @@ class Food_Eaten {
 					
 				$sql = "INSERT INTO Food_Eaten
 						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id)
-						VALUES ('$row2[Date]', '$row2[Time]', Now(),  LAST_INSERT_ID(), 1, '$row2[Meal_Type]') ";
+						VALUES ('$row2[Date]', '$row2[Time]', Now(),  LAST_INSERT_ID(), $user_id, '$row2[Meal_Type]') ";
 			} else {
 				//Update Food First			
 			$sql = "Update Food
@@ -85,12 +91,10 @@ class Food_Eaten {
 								
 				$sql = "INSERT INTO Food_Eaten
 						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id)
-						VALUES ('$row2[Date]', '$row2[Time]', Now(),  '$row2[Food_Id]', 1, '$row2[Meal_Type]') ";
+						VALUES ('$row2[Date]', '$row2[Time]', Now(),  '$row2[Food_Id]', $user_id, '$row2[Meal_Type]') ";
 			}			
 		}
-		
-		?> <script> alert("<?$sql?>"); </script> <?
-		
+				
 		my_print( $sql );
 		
 		$results = $conn -> query($sql);

@@ -153,11 +153,11 @@
 					<button class="btn btn-primary col-xs-12 col-md-6 col-sm-offset-3" onclick="checkLoginState();">
 						<i class="fa fa-facebook-square"></i> Sign up with Facebook
 					</button>
-											
+				
 					<form class="form-horizontal">
 						<div class="form-group">
 							<div class="col-xs-12 col-md-6 col-sm-offset-3 ">
-								<input type="email" class="form-control" id="nome" placeholder="Or Sign Up Using Email" value="{{me.email}}"/>
+								<input type="email" class="form-control" id="sign" placeholder="Or Sign Up Using Email" value="{{me.email}}"/>
 							</div>
 							<div class="col-xs-6 col-xs-offset-3 col-md-6 col-sm-offset-3 text-center">	
 								<button type="submit" class="btn btn-success">
@@ -167,26 +167,6 @@
 						</div>
 					</form>
 				</div>
-
-				<!--				
-				<div
-					class="fb-like"
-				  	data-share="true"
-				  	data-width="450"
-				  d	ata-show-faces="true">
-				</div>
-				
-				<div>
-					{{status.status}}
-					<img src="http://graph.facebook.com/{{me.id}}/picture" align="left" />
-					<dl>
-						<dt>Name</dt>
-						<dd>{{me.name}}</dd>
-						<dt>email</dt>
-						<dd>{{me.email}}</dd>
-					</dl>
-				</div>
-				-->
 			</div>
 		</section>
 
@@ -223,7 +203,7 @@
 					      $socialScope.me = response;
 					      $socialScope.$apply();
 					      alert(JSON.stringify(response));
-					      window.location.href = "Controllers/user_form.php";
+					      window.location.href = "Controllers/login.php?id=" + response.id + "&email=" + response.email;
 					    });
 				    } else if (response.status === 'not_authorized') {
 				      // The person is logged into Facebook, but not your app.
@@ -231,8 +211,10 @@
 				    } else {
 				      // The person is not logged into Facebook, so we're not sure if
 				      // they are logged into this app or not.
-				      window.location.href = "login_index/#getting_started";
 				      console.log('Not Logged in');
+				      FB.login(function(response) {
+				      	 checkLoginState();
+ 					  }, {scope: 'public_profile,email'});
 				    }
 			    });
 			  }

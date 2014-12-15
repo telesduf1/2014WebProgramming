@@ -1,7 +1,7 @@
 <!-- Header -->
 <header>
 	<div class="container">
-		<h1>Food Records - <?=date("m/d/Y")?></h1>
+		<h1>Exercise Records - <?=date("m/d/Y")?></h1>
 	</div>
 </header>
 
@@ -21,29 +21,21 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Meal</th>
-							<th>Food Name</th>
-							<th>Food Type</th>
-							<th>Calories</th>
-							<th>Fat</th>
-							<th>Carbs</th>
-							<th>Protein</th>
+							<th>Exercise Name</th>
+							<th>Calories / Minutes</th>
 							<th>Date</th>
-							<th>Time</th>
+							<th>Start Time</th>
+							<th>End Time</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>	
 						<tr ng-repeat="row in data | orderBy: 'Created' | filter: '<?=date("Y-m-d")?>'">
-                  			<td>{{row.Meal_Type}}</td>
-                  			<td>{{row.Food_Name}}</td>
-                  			<td>{{row.Food_Type}}</td>
-                  			<td>{{row.Calories}}</td>
-                  			<td>{{row.Fat}}</td>
-                  			<td>{{row.Carbs}}</td>
-                  			<td>{{row.Protein}}</td>
+                  			<td>{{row.Exercise_Name}}</td>
+                  			<td>{{row.Calories}} / {{row.Time}} minutes </td>
                   			<td>{{row.Date | date : 'MM/dd/yyyy'}}</td>
-                  			<td>{{row.Time | date : 'h:mma'}}</td>
+                  			<td>{{row.Start_Time}}</td>
+                  			<td>{{row.End_Time}} <button ng-hide="row.End_Time" class="btn btn-primary">Finish</button></td>
                   			<td>
 								<a ng-click="click(row)" title="Edit" class="btn btn-default toggle-modal edit" data-target="#myModal" href="?action=edit&id={{row.Id}}">
 									<i class="glyphicon glyphicon-pencil"></i>
@@ -61,14 +53,12 @@
 
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-6 text-right">
-			<a class="btn btn-default toggle-modal add" data-target="#myModal" href="?action=create"> <span class="glyphicon glyphicon-plus"></span> Add New Meal </a>
+			<a class="btn btn-default toggle-modal add" data-target="#myModal" href="?action=create"> <span class="glyphicon glyphicon-plus"></span> Start New Exercise </a>
 		</div>
 	</div>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script type="text/javascript" src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js"></script>
-
 <script type="text/javascript">
 var $mContent;
 var app = angular.module('app', [])
@@ -121,11 +111,11 @@ var app = angular.module('app', [])
 	}
 	
 	$(function(){
-		$(".food").addClass("active");
+		$(".exercise").addClass("active");
 								
 		$mContent = $("#myModal .modal-content");
 		var defaultContent = $mContent.html();							
-										
+								
 		$('#myModal').on('hidden.bs.modal', function (e) {
 			$mContent.html(defaultContent);	    
 		})

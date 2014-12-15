@@ -1,6 +1,5 @@
 <?
 ini_set('display_errors', 1);
-
 include_once __DIR__ . '/../inc/_all.php';
 include_once __DIR__ . '/../inc/check_login.php';
 
@@ -11,20 +10,21 @@ $view = null;
 
 switch ($action. '_' . $method) {
 	case 'create_GET':
-		$model = Food_Eaten::Blank();
-		$view = 'food_eaten/edit.php';
+		$model = Exercise_Done::Blank();
+		$view = 'exercise_done/edit.php';
 		break;
 	
 	case 'save_POST':
 			$sub_action = empty($_REQUEST['id']) ? 'created' : 'updated';
-			$errors = Food_Eaten::Validate($_REQUEST);
+			$errors = Exercise_Done::Validate($_REQUEST);
 			if(!$errors){
-				$errors = Food_Eaten::Save($_REQUEST);
+				$errors = Exercise_Done::Save($_REQUEST);
 			}
 			
 			if(!$errors){
 				//my_print($errors);
 				if($format == 'json'){
+					?> <script>alert("oi");</script> <?
 					header("Location: ?action=edit&format=json&id=$_REQUEST[id]");
 				}else{
 					header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
@@ -33,30 +33,26 @@ switch ($action. '_' . $method) {
 			}else{
 				//my_print($errors);
 				$model = $_REQUEST;
-				$view = "food_eaten/edit.php";		
+				$view = "exercise_done/edit.php";		
 			}
 			break;
 	case 'delete':
-			if($_SERVER['REQUEST_METHOD'] == 'GET'){
-				//Promt
-			}else{
-				
-			}
-			break;
+		$model = Exercise_Done::Get($_REQUEST['id']);
+		$view = "exercise_done/edit.php";
 		break;
 	case 'edit_GET':
-		$model = Food_Eaten::Get($_REQUEST['id']);
-		$view = "food_eaten/edit.php";		
+		$model = Exercise_Done::Get($_REQUEST['id']);
+		$view = "exercise_done/edit.php";		
 		break;
 	case 'delete_GET':
-		$model = Food_Eaten::Get($_REQUEST['id']);
-		$view = "food_eaten/delete.php";		
+		$model = Exercise_Done::Get($_REQUEST['id']);
+		$view = "exercise_done/delete.php";		
 		break;
 	case 'delete_POST':
-		$errors = Food_Eaten::Delete($_REQUEST['id']);
+		$errors = Exercise_Done::Delete($_REQUEST['id']);
 		if($errors){
-				$model = Food_Eaten::Get($_REQUEST['id']);
-				$view = "food_eaten/delete.php";
+				$model = Exercise_Done::Get($_REQUEST['id']);
+				$view = "exercise_done/delete.php";
 		}else{
 				header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
 				die();			
@@ -64,8 +60,8 @@ switch ($action. '_' . $method) {
 		break;
 	case 'index_GET':
 	default:
-		$model = Food_Eaten::Get();
-		$view = 'food_eaten/index.php';		
+		$model = Exercise_Done::Get();
+		$view = 'exercise_done/index.php';		
 		break;
 }
 

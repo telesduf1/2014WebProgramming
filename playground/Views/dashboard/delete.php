@@ -14,7 +14,7 @@
   			</div>
   		<? endif; ?>
   		<? $food = Food::Get($model['Food_id']);?>
-  		<h5>Are you sure you want to delete <b> <?=$food['name']?> </b> from <b> <?=$model['Time']?>? </b></h5>
+  		<h5>Are you sure you want to delete <?=$food['name']?> from <?=$model['Time']?>?</h5>
   		
   	</div>
 	<div class="modal-footer">

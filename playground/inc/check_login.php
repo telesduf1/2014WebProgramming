@@ -3,5 +3,5 @@
 	session_start();
 	
 	if (!isset($_SESSION['USER_ID'])) {
-		header("Location: ../login_index/#getting_started");
+		header("Location: ../login_index.html");
 	}

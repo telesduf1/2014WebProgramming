@@ -17,12 +17,13 @@
 
 		<link href="content/css/progress.css" rel="stylesheet" media="screen">
 		<link href="content/css/main.css" rel="stylesheet" media="screen">
+		<script src="http://platform.fatsecret.com/js?key=8e144c2228b44dc4a6d086b8fd2ffc8c"></script>
 	</head>
 
 	<body>
 		<!-- Navagation bar -->
 		<div id="main_nav"></div>
-
+		
 		<!-- Header -->
 		<header>
 			<div class="container">
@@ -36,7 +37,7 @@
 				<div class="col-sm-3 col-sm-offset-3">
 					<div class="pie_progress" role="progressbar" data-goal="100" id="trackedFood">
 						<div class="pie_progress__number">
-							0%
+							0
 						</div>
 						<div class="pie_progress__label">
 							<!-- <span class=""> <img src="img/food.png" alt="Food Ingested Today" title="Food Ingested Today" > </span> -->
@@ -46,9 +47,9 @@
 					<div class="row">
 						<div class="col-sm-12 text-center">
 							<p class="text-muted">
-								Food Ingested Today
+								<span class="glyphicon glyphicon-cutlery"> </span> Food Ingested Today
 								<br>
-								0 cal/ 'Total' cal
+								0 kcal/ 'Total' kcal
 							</p>
 						</div>
 					</div>
@@ -57,7 +58,7 @@
 				<div class="col-sm-3">
 					<div class="pie_progress" role="progressbar" data-goal="100" id="trackedExercise">
 						<div class="pie_progress__number">
-							0%
+							0
 						</div>
 						<div class="pie_progress__label">
 							<!-- <span class=""> <img src="img/exercise.png" alt="Food Burned Today" title="Food Burned Today"> </span> -->
@@ -67,9 +68,9 @@
 					<div class="row">
 						<div class="col-sm-12 text-center">
 							<p class="text-muted">
-								Food Burned Today
+								<span class="glyphicon glyphicon-fire"> </span> Food Burned Today
 								<br>
-								0 cal/ 'Total' cal
+								0 kcal/ 'Total' kcal
 							</p>
 						</div>
 					</div>
@@ -94,7 +95,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="content/js/jquery-asPieProgress.js"></script>
-		<script src="content/js/main.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function($) {
 				$("#main_nav").load("inc/nav.html", function() {

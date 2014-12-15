@@ -13,28 +13,28 @@
 				<span class="icon-bar"> </span>
 			</button>
 
-			<a class="navbar-brand" href="index.html">Fitness Tracker</a>
+			<a class="navbar-brand" href="dashboard.php">Fitness Tracker</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="home">
-					<a href="index.html">Home</a>
+				<li class="dashboard">
+					<a href="dashboard.php">Home</a>
 				</li>
 
 				<li class="food">
-					<a href="food.html"> Meal Records</a>
+					<a href="food_eaten.php"> Meal Records</a>
 				</li>
 				
 				<li class="exercise">
-					<a href="exercise.html">Exercise Records</a>
+					<a href="exercise_done.php">Exercise Records</a>
 				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
 
 				<li class="dropdown profile">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="glyphicon glyphicon-user"></span> Hello User <span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"> <img style="margin-top: -10px;" class="img-circle" src="http://graph.facebook.com/<?=$_SESSION['SOCIAL_ID']?>/picture" width="45" height="45" align="left" /> Hello <b><?=$_SESSION['USER_NAME']?></b> <span class="caret"> </span></a>
 					<ul class="dropdown-menu">
 						<li>
 							<a data-toggle="modal" data-target="#goalModal" href="_goal_form.html">Define New Goal </a>
