@@ -1,0 +1,19 @@
+h1{	
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+    color: #2F4F4F;
+}
+
+label{	
+	font-family: 'asap';
+	font-size: 20px;
+    color: #008080;
+}
+
+button{
+	margin-top: 20px;
+}
+
+.painel{
+	background-color: #F5F5F5;
+}

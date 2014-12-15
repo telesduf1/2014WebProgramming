@@ -10,8 +10,8 @@ $view = null;
 
 switch ($action. '_' . $method) {
 	case 'create_GET':
-		$model = Food::Blank();
-		$view = 'food/edit.php';
+		$model = Food_Type::Blank();
+		$view = 'food_type/edit.php';
 		break;
 	
 	case 'save_POST':
@@ -32,18 +32,18 @@ switch ($action. '_' . $method) {
 		//		display list including edited/new frow
 		break;
 	case 'edit_GET':
-		$model = Food::Get($_REQUEST['id']);
-		$view = "food/edit.php";		
+		$model = Food_Type::Get($_REQUEST['id']);
+		$view = "food_type/edit.php";		
 		break;
 	case 'delete_GET':
-		$model = Food::Get($_REQUEST['id']);
-		$view = "food/delete.php";		
+		$model = Food_Type::Get($_REQUEST['id']);
+		$view = "food_type/delete.php";		
 		break;
 	case 'delete_POST':
-		$errors = Food::Delete($_REQUEST['id']);
+		$errors = Food_Type::Delete($_REQUEST['id']);
 		if($errors){
-				$model = Food::Get($_REQUEST['id']);
-				$view = "food/delete.php";
+				$model = Food_Type::Get($_REQUEST['id']);
+				$view = "food_type/delete.php";
 		}else{
 				header("Location: ?sub_action=$sub_action&id=$_REQUEST[id]");
 				die();			
@@ -51,8 +51,8 @@ switch ($action. '_' . $method) {
 		break;
 	case 'index_GET':
 	default:
-		$model = Food::Get();
-		$view = 'food/index.php';		
+		$model = Food_Type::Get();
+		$view = 'food_type/index.php';		
 		break;
 }
 

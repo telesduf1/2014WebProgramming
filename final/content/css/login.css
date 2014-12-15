@@ -1,0 +1,107 @@
+body {
+	position: relative;
+	background-color: #DCDCDC;
+	padding-top: 40px;
+}
+
+header{
+	padding: 100px 0;
+    background-attachment: scroll;
+    background-image: linear-gradient(to bottom left, rgba(224,224,224,0),rgba(224,224,224,1)), url(https://d13yacurqjgara.cloudfront.net/users/296358/screenshots/1507834/fitness-dribbble.gif); /*url(http://cdn.thedroidguy.com/wp-content/uploads/2014/01/atlas.jpg);*/
+   	background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+section:nth-of-type(2n) {
+	background-color: #F5F5F5;
+}
+
+section {
+    padding: 100px 0;
+	min-height: 100vh;    
+}
+
+section h1{	
+    margin-top: auto;
+    margin-bottom: 100px;
+    font-family: 'Satisfy', cursive;
+    font-size: 40px;
+    color: #2F4F4F;
+}
+
+@media screen and (max-width: 768px) {
+    section h1{
+        font-size: 30px;
+    }
+}
+
+section p{
+    margin-bottom: 75px;
+    text-transform: none;
+	font-family: 'asap';
+	font-size: 20px;
+    color: #008080;
+}
+
+@media(min-width:768px) {
+    section {
+        padding: 150px 0;
+    }
+}
+
+.header{
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+@media(max-width:468px) {
+    .header{
+        padding-top: 50px;
+        padding-bottom: 0;
+    }
+}
+
+.navbar-default{
+	font-family: 'Asap', sans-serif;
+	background: #DCDCDC;
+}
+
+#title{
+	padding-top: 0px;
+    font-family: 'Satisfy', cursive;
+    font-size: 50px;
+    color: #2F4F4F;
+
+}
+
+@media screen and (max-width: 768px) {
+    #title{
+        font-size: 25px;
+    }
+}
+
+#brand{
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+    color: #2F4F4F;
+    text-decoration: none;
+}
+
+#brand:hover{
+    color: #008080;
+}
+
+#menu a{
+    color: #2F4F4F;
+    text-decoration: none;	
+}
+
+#menu a:hover{
+    color: #008080;
+}
+
+#sign{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
