@@ -11,9 +11,6 @@
 		<!-- Ensures proper rendenring across devices -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, initial-scale=1.0, maximum-scale=1.0">
 
-		<!--
-		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-		-->
 		<link href='http://fonts.googleapis.com/css?family=Asap|Satisfy' rel='stylesheet' type='text/css'>
 		
 		<!-- Bootstrap core CSS -->
@@ -153,7 +150,6 @@
 					<button class="btn btn-primary col-xs-12 col-md-6 col-sm-offset-3" onclick="checkLoginState();">
 						<i class="fa fa-facebook-square"></i> Sign up with Facebook
 					</button>
-				
 					<form class="form-horizontal">
 						<div class="form-group">
 							<div class="col-xs-12 col-md-6 col-sm-offset-3 ">
@@ -202,11 +198,13 @@
 				      FB.api('/me', function(response) {
 					      $socialScope.me = response;
 					      $socialScope.$apply();
-					      alert(JSON.stringify(response));
 					      window.location.href = "Controllers/login.php?id=" + response.id + "&email=" + response.email;
 					    });
 				    } else if (response.status === 'not_authorized') {
 				      // The person is logged into Facebook, but not your app.
+				      FB.login(function(response) {
+				      	 checkLoginState();
+ 					  }, {scope: 'public_profile,email'});				      
 				      console.log('not_authorized');
 				    } else {
 				      // The person is not logged into Facebook, so we're not sure if

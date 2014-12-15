@@ -95,7 +95,7 @@ class Login{
 		$_SESSION['USER_GOAL_LABEL'] = $user_goalLabel;
 		$_SESSION['USER_CURRENT_WEIGHT']  = $user_currentWeight;
 																			
-		header("Location: ../Controllers/food_eaten");
+		header("Location: ../Controllers/dashboard");
 	}
 	
 	static public function Log($id, $email) {
@@ -188,6 +188,6 @@ class Login{
 		$_SESSION['USER_GOAL_LABEL'] = $user_goalLabel;
 		$_SESSION['USER_CURRENT_WEIGHT']  = $user_currentWeight;
 
-		header("Location: ../Controllers/food_eaten");
+		header("Location: ../Controllers/dashboard");
 	}	
 }

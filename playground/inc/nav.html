@@ -43,9 +43,36 @@
 				</li>
 
 				<li>
-					<a href="#"><span class="glyphicon glyphicon-log-in"> </span> Log out</a>
+					<a onclick="logout();" href="#"><span class="glyphicon glyphicon-log-in"> </span> Log out</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
+
+
+<script type="text/javascript">
+   	function logout() {
+	    FB.getLoginStatus(function(response) {
+	    	window.location.href= "logout.php";
+	    	//alert("first"+JSON.stringify(response));
+	      	FB.logout(function(response){
+	      		alert(JSON.stringify(response));
+			// Person is now logged out
+		  	});
+			if (response.status === 'connected') {
+				FB.api('/me', function(response) {
+					//alert("second"+JSON.stringify(response));
+						});
+				    } else if (response.status === 'not_authorized') {
+				      // The person is logged into Facebook, but not your app.
+				      console.log('not_authorized');
+				    } else {
+				      // The person is not logged into Facebook, so we're not sure if
+				      // they are logged into this app or not.
+				      console.log('Not Logged in');
+				    }		  		    	
+	    });   		
+	}			  
+
+</script>

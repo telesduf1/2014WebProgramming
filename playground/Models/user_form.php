@@ -22,6 +22,7 @@ class User_form {
 			$conn -> query($sql);
 			
 			$user_id = $conn->insert_id;
+			$conn = GetConnection();
 			
 			//Save its Current Wheight
 			$sql = "INSERT INTO User_Wheight

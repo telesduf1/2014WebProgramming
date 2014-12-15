@@ -73,7 +73,7 @@
 
 						<div class="row">
 							<div class="form-group">
-								<label for="weight" class="col-xs-2 control-label"> Weight: </label>
+								<label for="weight" class="col-xs-2 control-label"> Weight(lb): </label>
 								<div class="col-xs-5">
 									<input type="number" class="form-control" id="currentWeight" name="Current_Weight" required>
 								</div>
@@ -82,7 +82,7 @@
 
 						<div class="row">
 							<div class="form-group">
-								<label for="height" class="col-xs-2 control-label"> Height: </label>
+								<label for="height" class="col-xs-2 control-label"> Height(cm): </label>
 								<div class="col-xs-5">
 									<input type="number" class="form-control" id="height" name="Height" required>
 								</div>
@@ -117,7 +117,7 @@
 
 						<div class="row">
 							<div class="form-group">
-								<label for="goalWheight" class="col-xs-2 control-label"> Goal Wheight: </label>
+								<label for="goalWheight" class="col-xs-2 control-label"> Goal Wheight(lb): </label>
 								<div class="col-xs-5">
 									<input type="number" class="form-control" id="goalWeight" name="Goal_Weight" required>
 								</div>
