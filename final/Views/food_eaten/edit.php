@@ -126,7 +126,17 @@
 		      			<span class="help-block"><?=$errors['Protein']?></span>
 		      		<? endif; ?>
 				</div>
-			</div>			
+			</div>
+						
+			<!-- FINAL -- FRIEND YOU ATE WITH-->
+			<div class="form-group <?=!empty($errors['Name']) ? 'has-error has-feedback' : '' ?>">
+				<label for="friendName" class="col-xs-3 control-label"> Who you Ate with </label>
+				<div class="col-xs-8">
+					<input type="text" id="friendName" autocomplete="off" name="Friend_Name" onkeyup="" class="form-control" value="<?=$model['Friend_Name'] ?>">
+		      		<div style="overflow: auto" class="col-xs-11" id="friendsearch"></div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 

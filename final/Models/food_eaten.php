@@ -6,7 +6,7 @@ class Food_Eaten {
 
 	public static function Blank() {
 		return array('Id' => null, 'Date' => date('Y-m-d'), 'Time' => date('h:i'), 'Food_id' => null, 'Users_id' => null, 'Meal_Type_id' => null, 'Food_Name' => null, 'Calories' => null,
-					 'Fat' => null, 'Carbs' => null, 'Protein' => null );
+					 'Fat' => null, 'Carbs' => null, 'Protein' => null, 'Friend_Name' => null );
 	}
 
 	public static function Get($id = null) {
@@ -14,7 +14,7 @@ class Food_Eaten {
 		
 		$sql = "SELECT fe.id as Id, fe.created_at as Created, fe.updated_at as Updated, fe.date as Date, fe.time as Time, fe.Food_id as Food_id, 
 					   fe.Users_id as User_id, fe.Meal_Type_id as Meal_Type_id, mt.name as Meal_Type, f.name as Food_Name, f.calories as Calories, 
-					   f.carbs as Carbs, f.fat as Fat, f.protein as Protein, ft.name as Food_Type, f.Food_Category_id as Food_Category_id 
+					   f.carbs as Carbs, f.fat as Fat, f.protein as Protein, ft.name as Food_Type, f.Food_Category_id as Food_Category_id, fe.friend as Friend_Name 
 				FROM Food_Eaten fe, Food f, Meal_Type mt, Food_Category ft
 				WHERE fe.Meal_Type_id = mt.id
 				AND   fe.Food_id = f.id
@@ -47,7 +47,7 @@ class Food_Eaten {
 				$conn -> query($sql);
 												
 				$sql = "Update Food_Eaten
-						Set Date='$row2[Date]', Time='$row2[Time]', Food_id=LAST_INSERT_ID(), Meal_Type_id='$row2[Meal_Type]'
+						Set Date='$row2[Date]', Time='$row2[Time]', Food_id=LAST_INSERT_ID(), Meal_Type_id='$row2[Meal_Type]', friend='$row2[Friend_Name]'
 						WHERE id = $row2[id]
 					";				
 			} else {
@@ -62,7 +62,7 @@ class Food_Eaten {
 			$conn -> query($sql);
 
 				$sql = "Update Food_Eaten
-						Set Date='$row2[Date]', Time='$row2[Time]', Food_id='$row2[Food_Id]', Meal_Type_id='$row2[Meal_Type]'
+						Set Date='$row2[Date]', Time='$row2[Time]', Food_id='$row2[Food_Id]', Meal_Type_id='$row2[Meal_Type]', friend='$row2[Friend_Name]'
 						WHERE id = $row2[id]
 					";
 			}
@@ -78,8 +78,8 @@ class Food_Eaten {
 				$conn -> query($sql);
 					
 				$sql = "INSERT INTO Food_Eaten
-						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id)
-						VALUES ('$row2[Date]', '$row2[Time]', Now(),  LAST_INSERT_ID(), $user_id, '$row2[Meal_Type]') ";
+						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id, friend)
+						VALUES ('$row2[Date]', '$row2[Time]', Now(),  LAST_INSERT_ID(), $user_id, '$row2[Meal_Type]', '$row2[Friend_Name]') ";
 			} else {
 				//Update Food First			
 			$sql = "Update Food
@@ -90,8 +90,8 @@ class Food_Eaten {
 				$conn -> query($sql);
 								
 				$sql = "INSERT INTO Food_Eaten
-						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id)
-						VALUES ('$row2[Date]', '$row2[Time]', Now(),  '$row2[Food_Id]', $user_id, '$row2[Meal_Type]') ";
+						(Date, Time, created_at, Food_id, Users_id, Meal_Type_id, friend)
+						VALUES ('$row2[Date]', '$row2[Time]', Now(),  '$row2[Food_Id]', $user_id, '$row2[Meal_Type]', '$row2[Friend_Name]') ";
 			}			
 		}
 				

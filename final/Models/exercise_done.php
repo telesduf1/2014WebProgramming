@@ -5,7 +5,7 @@ include_once __DIR__ . '/../inc/_all.php';
 class Exercise_Done{
 
 	public static function Blank() {
-		return array('Id' => null,  'Exercise_Id' => null, 'Exercise_Name' => null, 'Date' => date('Y-m-d'), 'Time' => 1, 'Start_Time' => date('h:i'), 'End_Time' => null);
+		return array('Id' => null,  'Exercise_Id' => null, 'Exercise_Name' => null, 'Date' => date('Y-m-d'), 'Time' => 1, 'Start_Time' => date('h:i'), 'End_Time' => null, 'Friend_Name' => null );
 	}
 
 	public static function Get($id = null) {
@@ -13,7 +13,7 @@ class Exercise_Done{
 		
 		$sql = "SELECT ed.id as Id, e.name as Exercise_Name, e.calories as Calories, e.time as Time, 
        				   ed.date as Date, e.id as Exercise_Id, ed.start_time as Start_Time, 
-       				   ed.end_time as End_Time 
+       				   ed.end_time as End_Time, ed.friend as Friend_Name 
 				FROM Exercise_Done ed, Exercise e
 				WHERE ed.Exercise_id = e.id  AND ed.Users_id = $user_id ";
 
@@ -43,7 +43,7 @@ class Exercise_Done{
 				$conn -> query($sql);
 												
 				$sql = "Update Exercise_Done
-						Set Date='$row2[Date]', Start_Time='$row2[Start_Time]', Exercise_id=LAST_INSERT_ID()
+						Set Date='$row2[Date]', Start_Time='$row2[Start_Time]', Exercise_id=LAST_INSERT_ID(), friend='$row2[Friend_Name]' 
 						WHERE id = $row2[id] AND Users_id = $user_id
 					";				
 			} else {
@@ -56,7 +56,7 @@ class Exercise_Done{
 			$conn -> query($sql);
 
 			$sql = "Update Exercise_Done
-					Set Date='$row2[Date]', Start_Time='$row2[Start_Time]', Exercise_id=$row2[Exercise_Id]
+					Set Date='$row2[Date]', Start_Time='$row2[Start_Time]', Exercise_id=$row2[Exercise_Id], friend='$row2[Friend_Name]'
 					WHERE id = $row2[id] AND Users_id = $user_id
 				";
 			}
@@ -71,8 +71,8 @@ class Exercise_Done{
 				$conn -> query($sql);
 				
 				$sql = "INSERT INTO Exercise_Done
-						(Date, Start_Time, created_at, Exercise_id, Users_id)
-						VALUES ('$row2[Date]', '$row2[Start_Time]', Now(),  LAST_INSERT_ID(), $user_id) ";
+						(Date, Start_Time, created_at, Exercise_id, Users_id, friend)
+						VALUES ('$row2[Date]', '$row2[Start_Time]', Now(),  LAST_INSERT_ID(), $user_id, '$row2[Friend_Name]') ";
 			} else {
 				//Update Exercise First				
 				$sql = "Update Exercise
@@ -82,8 +82,8 @@ class Exercise_Done{
 				$conn -> query($sql);
 								
 				$sql = "INSERT INTO Exercise_Done
-						(Date, Start_Time, created_at, Exercise_id, Users_id)
-						VALUES ('$row2[Date]', '$row2[Start_Time]', Now(), '$row2[Exercise_Id]' , $user_id)";
+						(Date, Start_Time, created_at, Exercise_id, Users_id, friend)
+						VALUES ('$row2[Date]', '$row2[Start_Time]', Now(), '$row2[Exercise_Id]' , $user_id, '$row2[Friend_Name]')";
 			}			
 		}
 					

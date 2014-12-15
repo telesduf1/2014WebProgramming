@@ -204,7 +204,7 @@
 				      // The person is logged into Facebook, but not your app.
 				      FB.login(function(response) {
 				      	 checkLoginState();
- 					  }, {scope: 'public_profile,email'});				      
+ 					  }, {scope: 'user_friends,public_profile,email'});				      
 				      console.log('not_authorized');
 				    } else {
 				      // The person is not logged into Facebook, so we're not sure if
@@ -212,7 +212,7 @@
 				      console.log('Not Logged in');
 				      FB.login(function(response) {
 				      	 checkLoginState();
- 					  }, {scope: 'public_profile,email'});
+ 					  }, {scope: 'user_friends,public_profile,email'});
 				    }
 			    });
 			  }

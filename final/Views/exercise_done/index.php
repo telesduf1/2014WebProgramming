@@ -26,6 +26,7 @@
 							<th>Date</th>
 							<th>Start Time</th>
 							<th>End Time</th>
+							<th>Friend</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -35,7 +36,8 @@
                   			<td>{{row.Calories}} / {{row.Time}} minutes </td>
                   			<td>{{row.Date | date : 'MM/dd/yyyy'}}</td>
                   			<td>{{row.Start_Time}}</td>
-                  			<td>{{row.End_Time}} <button ng-hide="row.End_Time" class="btn btn-primary">Finish</button></td>
+                  			<td>{{row.End_Time}} <button ng-hide="row.End_Time" class="btn btn-primary btn-sm">Finish</button></td>
+                  			<td>{{row.Friend_Name}} <span ng-hide="row.Friend_Name" class="label label-default">No Friend</span></td></td>                  			
                   			<td>
 								<a ng-click="click(row)" title="Edit" class="btn btn-default toggle-modal edit" data-target="#myModal" href="?action=edit&id={{row.Id}}">
 									<i class="glyphicon glyphicon-pencil"></i>

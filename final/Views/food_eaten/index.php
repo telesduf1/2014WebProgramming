@@ -30,6 +30,7 @@
 							<th>Protein</th>
 							<th>Date</th>
 							<th>Time</th>
+							<th>Friend</th>							
 							<th></th>
 						</tr>
 					</thead>
@@ -44,6 +45,7 @@
                   			<td>{{row.Protein}}</td>
                   			<td>{{row.Date | date : 'MM/dd/yyyy'}}</td>
                   			<td>{{row.Time | date : 'h:mma'}}</td>
+                  			<td>{{row.Friend_Name}} <span ng-hide="row.Friend_Name" class="label label-default">No Friend</span></td>                  			                  			
                   			<td>
 								<a ng-click="click(row)" title="Edit" class="btn btn-default toggle-modal edit" data-target="#myModal" href="?action=edit&id={{row.Id}}">
 									<i class="glyphicon glyphicon-pencil"></i>

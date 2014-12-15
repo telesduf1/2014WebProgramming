@@ -73,18 +73,28 @@
 				<div class="col-xs-8">
 					<input type="number" id="time" name="Time" class="form-control" required value="<?=$model['Time'] ?>">
 				</div>
-			</div>									
-		</div>
+			</div>	
+			
+			<!-- FINAL -- FRIEND YOU EXERCISE WITH-->
+			<div class="form-group <?=!empty($errors['Name']) ? 'has-error has-feedback' : '' ?>">
+				<label for="friendName" class="col-xs-3 control-label"> Who you Exercise with </label>
+				<div class="col-xs-8">
+					<input type="text" id="friendName" autocomplete="off" name="Friend_Name" onkeyup="" class="typeahead form-control" value="<?=$model['Friend_Name'] ?>">
+		      		<div style="overflow: auto" class="col-xs-11" id="friendsearch"></div>
+				</div>
+			</div>			
+											
+		</div>		
 	</div>
-
+	
 	<div class="modal-footer  text-center">
 		<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
 		<input type="submit" name="submit" class="btn btn-default" value="Start" />
 	</div>
 </form>
 
-<script>
-
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+<script>	
 	function mouseOver(object) {
 		object.style.background = "#f3f3f3";
 	}

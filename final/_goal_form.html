@@ -1,4 +1,4 @@
-<div class="modal-header">
+div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal">
 		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 	</button>
@@ -8,40 +8,37 @@
 <div class="modal-body">
 	<form class="form" >
 
-		<div class="row">
-			<div class="form-group">
-				<label for="toburn" class="col-xs-12 control-label text-center"> Define goal to lose weight by week(lb/week): </label>
-				<div class="col-xs-6 col-xs-offset-3 ">
-					<input type="number" class="form-control" required>
-				</div>
+		<div class="form-group">
+			<label for="intake" class="col-xs-3 control-label"> Total to ingest per day </label>
+			<div class="col-xs-8">
+				<input type="number" id="intake" class="form-control" value="<?=$_SESSION['MAX_FOOD']?>">
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="form-group">
-				<label for="aimed" class="col-xs-12 control-label text-center"> Define weight aimed(lb): </label>
-				<div class="col-xs-6 col-xs-offset-3">
-					<input type="number" class="form-control" required>
-				</div>
+
+		<div class="form-group">
+			<label for="burn" class="col-xs-3 control-label"> Total to burn per day </label>
+			<div class="col-xs-8">
+				<input type="number" id="burn" class="form-control" value="<?=$_SESSION['MAX_EXERCISE']?>">
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-xs-12">
-				<p class="bg-info text-center">
-					Based on your profile the Healthy Weight for you is between X and Y lb.
-				</p>
+		<div class="form-group">
+			<label for="burn" class="col-xs-3 control-label"> Goal (lb) </label>
+			<div class="col-xs-8">
+				<input type="number" id="burn" class="form-control" value="<?=$_SESSION['USER_WEIGHT_GOAL']?>">
 			</div>
 		</div>
+		
+		<div class="form-group">
+			<label for="burn" class="col-xs-3 control-label"> Current Weitght (lb) </label>
+			<div class="col-xs-8">
+				<input type="number" id="burn" class="form-control" value="<?=$_SESSION['USER_WEIGHT_GOAL']?>">
+			</div>
+		</div>		
 	</form>
 </div>
 
-<div class="modal-footer">
-	<div class="row">
-		<div class="col-xs-12 text-center">
-			<button type="submit" class="btn btn-default">
-				Register
-			</button>
-		</div>
-	</div>
+<div class="modal-footer  text-center">
+	<input type="button" class="btn btn-default" data-dismiss="modal" value="oK" />
 </div>
