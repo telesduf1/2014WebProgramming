@@ -19,7 +19,7 @@ switch ($action. '_' . $method) {
 			//$errors = User_Form::Validate($_REQUEST);
 
 			$errors = User_Form::Save($_REQUEST);
-			my_print($errors);
+			//my_print($errors);
 			if(!$errors){
 				Login::Validate($_REQUEST);
 				die();

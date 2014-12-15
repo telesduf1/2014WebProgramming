@@ -25,23 +25,25 @@ class User_form {
 			$conn = GetConnection();
 			
 			//Save its Current Wheight
-			$sql = "INSERT INTO User_Wheight
-				(wheight, Users_id, created_at)
-				VALUES ('$row2[Current_Weight]', '$user_id', Now())";
-			//my_print( $sql );
-			$conn -> query($sql);
+			$sql = "INSERT INTO User_Weight
+				(weight, Users_id, created_at)
+				VALUES ('$row2[Current_Weight]', $user_id, Now())";
 			
+			$conn -> query($sql);
+			$error = $conn -> error;
+			my_print( $error );
 			//Save its Current Goal
 			$sql = "INSERT INTO User_Goal
-				(wheight, Goal_Catgory_id, Users_id, created_at)
-				VALUES ('$row2[Goal_Weight]', '$row2[Goal_Type_id]', '$user_id', Now())";
+				(weight, Goal_Category_id, Users_id, created_at)
+				VALUES ('$row2[Goal_Weight]', '$row2[Goal_Type_id]', $user_id, Now())";
 			//my_print( $sql );
 			$conn -> query($sql);
-			
+			$error = $conn -> error;
+			my_print( $error );
 			//Save Login											
 			$sql = "INSERT INTO Login
 				(email_address, social_id, password, Users_id, created_at)
-				VALUES ('$row2[Email]', '$row2[Social_id]', '$row2[Password]', '$user_id', Now())";
+				VALUES ('$row2[Email]', '$row2[Social_id]', '$row2[Password]', $user_id, Now())";
 			
 		} else {
 		}
